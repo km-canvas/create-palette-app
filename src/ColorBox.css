@@ -25,13 +25,13 @@
 	display: inline-block;
 	top: calc(50% - 15px);
 	left: calc(50% - 50px);
-	text-align: center;
 	outline: none;
 	border: none;
 	background: rgba(255,255,255,0.3);
 	font-size: 1rem;
 	line-height: 30px;
-	color: #fff;
+	color: #f1f1f1;
+	text-align: center;
 	text-transform: uppercase;
 	opacity: 0;
 	cursor: pointer
@@ -40,9 +40,54 @@
 	opacity: 1;
 	transition: 0.5s;
 }
-.copy-button:hover {
-	transform:scale(1.1)
+
+.copy-button::before,
+.copy-button::after {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: #fff;
+	content: '';
+	opacity: 0;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	-moz-transition: opacity 0.3s, -moz-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+	-webkit-transform: translateY(-5px);
+	-moz-transform: translateY(-5px);
+	transform: translateY(-5px);
 }
+
+.copy-button::before {
+	top: 0;
+	-webkit-transform: translateY(-5px);
+	-moz-transform: translateY(-5px);
+	transform: translateY(-5px);
+}
+
+.copy-button::after {
+	bottom: 0;
+	-webkit-transform: translateY(5px);
+	-moz-transform: translateY(5px);
+	transform: translateY(5px);
+}
+
+.copy-button:hover,
+.copy-button:focus {
+	color: #fff;
+	background-color: transparent;
+}
+
+.copy-button:hover::before,
+.copy-button:focus::before,
+.copy-button:hover::after,
+.copy-button:focus::after {
+	opacity: 1;
+	-webkit-transform: translateY(0px);
+	-moz-transform: translateY(0px);
+	transform: translateY(0px);
+}
+
 .see-more {
 	background: rgba(255,255,255,0.3);
 	position: absolute;
@@ -83,7 +128,7 @@
 	text-align: center;
 	color: white;
 	opacity: 0;
-	transform:scale(0.1);
+	transform:scale(0);
 }
 .copy-message.show {
 	opacity: 1;

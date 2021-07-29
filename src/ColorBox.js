@@ -26,16 +26,16 @@ export class ColorBox extends Component {
 					<h1>copied!</h1>
 					<p>{background}</p>
 				</div>
-					<div className="copy-container">
-						<div className="box-content">
-							<span className="ColorBox-name">{name}</span>
-						</div>
-						<CopyToClipboard text={background} onCopy={this.changeCopyState}>
-							<button className="copy-button">Copy</button>
-						</CopyToClipboard>
+				<div className="copy-container">
+					<div className="box-content">
+						<span className="ColorBox-name">{name}</span>
 					</div>
-					<span className="see-more">More</span>
+					<CopyToClipboard text={background} onCopy={this.changeCopyState}>
+						<button className="copy-button">Copy</button>
+					</CopyToClipboard>
 				</div>
+				<span className="see-more">More</span>
+			</div>
 		)
 	}
 }

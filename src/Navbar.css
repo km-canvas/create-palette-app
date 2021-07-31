@@ -14,18 +14,33 @@
 	font-size: 22px;
 	background-color: #d5d5d5;
 }
-
-.Navbar-logo i {
-	margin-right: 8px;
+.Navbar-logo a {
+	text-decoration: none;
+	color: #000;
+}
+.Navbar-icons {
+	width: 30px;
+}
+.Navbar-icons span {
+	position: relative;
+}
+.fa-palette {
+	position: absolute;
+	top: calc(50% - 11px);
+	left: 50%;
   background: -webkit-linear-gradient(45deg, #9c4f96, #ff6355, #fba949, #fae442, #8bd448, #2aa8f2);
 	-webkit-background-clip: text;
 	background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.Navbar-logo a {
-	text-decoration: none;
-	color: #000;
+.fa-palette.shadow {
+  background: #000;
+	-webkit-background-clip: text;
+	background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
+
 .slider {
 	width: 340px;
 	margin: 0 10px;

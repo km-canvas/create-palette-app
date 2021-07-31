@@ -31,9 +31,14 @@ class Navbar extends Component {
 		return (
 			<nav className="Navbar">
 				<div className="Navbar-logo">
+					<div className="Navbar-icons">
+						<span>
+							<i className="fas fa-palette shadow"></i> 
+							<i className="fas fa-palette"></i> 
+						</span>
+					</div>
 				 {/* eslint-disable-next-line */}
 					<a href="#">
-						<i class="fas fa-palette"></i> 
 						ColorApp
 					</a>
 				</div>

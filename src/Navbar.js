@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -37,10 +38,9 @@ class Navbar extends Component {
 							<i className="fas fa-palette"></i> 
 						</span>
 					</div>
-				 {/* eslint-disable-next-line */}
-					<a href="#">
+					<Link to="/">
 						ColorApp
-					</a>
+					</Link>
 				</div>
 				<div className="slider-container">
 					<span>Level: {level} </span>

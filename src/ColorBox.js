@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {CopyToClipboard} from "react-copy-to-clipboard";
 import "./ColorBox.css";
 
@@ -20,22 +21,24 @@ export class ColorBox extends Component {
 		const { background, name } = this.props;
 		const { copied } = this.state;
 		return (
-			<div style={{background: background}} className="ColorBox">
-				<div style={{background}} className={`copy-overlay ${copied && "show"}`}></div>
-				<div className={`copy-message ${copied && "show"}`}>
-					<h1>copied!</h1>
-					<p>{background}</p>
-				</div>
-				<div className="copy-container">
-					<div className="box-content">
-						<span className="ColorBox-name">{name}</span>
+			<CopyToClipboard text={background} onCopy={this.changeCopyState}>
+				<div style={{background: background}} className="ColorBox">
+					<div style={{background}} className={`copy-overlay ${copied && "show"}`}></div>
+					<div className={`copy-message ${copied && "show"}`}>
+						<h1>copied!</h1>
+						<p>{background}</p>
 					</div>
-					<CopyToClipboard text={background} onCopy={this.changeCopyState}>
-						<button className="copy-button">Copy</button>
-					</CopyToClipboard>
-				</div>
-				<span className="see-more">More</span>
-			</div>
+					<div className="copy-container">
+						<div className="box-content">
+							<span className="ColorBox-name">{name}</span>
+						</div>
+							<button className="copy-button">Copy</button>
+					</div>
+					<Link to="/" onClick={e => e.stopPropagation()}>
+						<span className="see-more">More</span>
+					</Link>
+				</div>	
+			</CopyToClipboard>
 		)
 	}
 }

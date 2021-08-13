@@ -14,7 +14,7 @@ class Navbar extends Component {
 		super(props);
 		this.state = {
 			 format: "hex",
-			 open: false
+			 open: false,
 		}
 		this.handleFormatChange = this.handleFormatChange.bind(this);
 		this.closeSnackbar = this.closeSnackbar.bind(this);
@@ -27,7 +27,7 @@ class Navbar extends Component {
 		this.setState({ open: false })
 	}
 	render() {
-		const { level, changeLevel } = this.props;
+		const { level, changeLevel, isFullPalette } = this.props;
 		const { format } = this.state;
 		return (
 			<nav className="Navbar">
@@ -42,7 +42,7 @@ class Navbar extends Component {
 						ColorApp
 					</Link>
 				</div>
-				<div className="slider-container">
+				{isFullPalette && <div className="slider-container">
 					<span>Level: {level} </span>
 					<div className="slider">
 						<Slider 
@@ -54,6 +54,7 @@ class Navbar extends Component {
 							/>									
 					</div>
 				</div>
+				}
 				<div className="select-container">
 					<span>Format: </span>
 					<Select value={format} onChange={this.handleFormatChange}>

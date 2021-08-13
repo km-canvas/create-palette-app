@@ -19,9 +19,16 @@
 	bottom: 0;
 	width: 100%;
 	padding: 0.2em;
+	color: black;
 	font-size: 0.8rem;
 	letter-spacing: 1px;
 	text-transform: uppercase;
+}
+.light-text {
+	color: white;
+}
+.ColorBox .dark-text {
+	color: rgba(0,0,0,0.5);
 }
 
 .copy-button, .back-button {
@@ -60,7 +67,6 @@
 	left: 0;
 	width: 100%;
 	height: 2px;
-	background: #fff;
 	content: '';
 	opacity: 0;
 	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
@@ -69,6 +75,14 @@
 	-webkit-transform: translateY(-5px);
 	-moz-transform: translateY(-5px);
 	transform: translateY(-5px);
+}
+.copy-button::before,
+.copy-button::after {
+	background: #fff;
+}
+.copy-button.dark-text::before,
+.copy-button.dark-text::after {
+	background: rgba(0,0,0,0.5);
 }
 
 .copy-button::before {
@@ -88,6 +102,11 @@
 .copy-button:hover,
 .copy-button:focus {
 	color: #fff;
+	background-color: transparent;
+}
+.copy-button.dark-text:hover,
+.copy-button.dark-text:focus {
+	color: rgba(0,0,0,0.5);
 	background-color: transparent;
 }
 
@@ -113,6 +132,7 @@
 	text-transform: uppercase;
 	text-align: center;
 }
+
 .copy-overlay {
 	opacity: 0;
 	z-index: 0;

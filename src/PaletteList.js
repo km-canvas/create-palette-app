@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MiniPalette from './MiniPalette';
 import styles from './styles/PaletteListStyles';
 import { withStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
 
 class PaletteList extends Component {
 	goToPalette(id){
@@ -14,6 +15,7 @@ class PaletteList extends Component {
 				<div className={classes.container}>
 					<nav className={classes.nav}>
 						<h1>React Colors</h1>
+						<Link to="/palette/new">Create Custom Palette</Link>
 					</nav>
 					<div className={classes.palettes}>
 						{palettes.map(palette => (

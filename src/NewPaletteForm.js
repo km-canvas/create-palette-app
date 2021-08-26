@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ChromePicker } from 'react-color';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -7,11 +8,13 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { colors } from '@material-ui/core';
 
-const drawerWidth = 240;
+const drawerWidth = 400;
 
 const styles = theme => ({
   root: {
@@ -54,7 +57,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -74,10 +77,14 @@ class NewPaletteForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			open: false
+			open: false,
+      currentColor: "#00ddc6",
+      allColors: ["purple", "#7bbac6"]
 		}
 		this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
 		this.handleDrawerClose = this.handleDrawerClose.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
+    this.addNewColor = this.addNewColor.bind(this);
 	}
   handleDrawerOpen() {
     this.setState({ open: true });
@@ -85,10 +92,16 @@ class NewPaletteForm extends Component {
   handleDrawerClose() {
     this.setState({ open: false });
   };
+  handleColorChange(newColor) {
+    this.setState({ currentColor: newColor.hex })
+  }
+  addNewColor() {
+    this.setState({ allColors: [...this.state.allColors, this.state.currentColor] })
+  }
 
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { open, currentColor, allColors } = this.state;
 
     return (
       <div className={classes.root}>
@@ -128,13 +141,34 @@ class NewPaletteForm extends Component {
             </IconButton>
           </div>
           <Divider />
+					<Typography variant="h4">
+						Design Your Palette
+					</Typography>
+          <div>
+  					<Button variant="contained" color="secondary">Clear Palette</Button>
+	  				<Button variant="contained" color="primary">Random Color</Button>
+          </div>
+					<ChromePicker color={currentColor} onChangeComplete={this.handleColorChange} />
+          <Button 
+            style={{backgroundColor: currentColor}} 
+            variant="contained" 
+            color="primary"
+            onClick={this.addNewColor}
+            >
+            Add Color to Palette          
+          </Button>
         </Drawer>
         <main
           className={classNames(classes.content, {
             [classes.contentShift]: open,
           })}
-        	>
+        >
           <div className={classes.drawerHeader} />
+          <ul>
+            {allColors.map(color => (
+              <li>{color}</li>
+            ))}
+          </ul>
         </main>
       </div>
     );

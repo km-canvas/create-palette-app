@@ -91,6 +91,7 @@ class NewPaletteForm extends Component {
     this.addNewColor = this.addNewColor.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.saveCustomPalette = this.saveCustomPalette.bind(this);
+    this.removeColor = this.removeColor.bind(this);
 	}
   componentDidMount() {
     // custom rule for text validator
@@ -138,6 +139,11 @@ class NewPaletteForm extends Component {
     };
     this.props.savePalette(newPalette);
     this.props.history.push("/");
+  }
+  removeColor(colorName) {
+    this.setState({ 
+      allColors: this.state.allColors.filter( color => color.name !== colorName )
+    })
   }
 
   render() {
@@ -247,7 +253,8 @@ class NewPaletteForm extends Component {
             <DraggableColorBox 
               color={colorObj.color} 
               name={colorObj.name}
-              key={colorObj.name} 
+              key={colorObj.name}
+              handleDelete={() => this.removeColor(colorObj.name)} 
             />
           ))}
         </main>

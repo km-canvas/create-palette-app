@@ -30,19 +30,19 @@ const styles = {
 	},
 	deleteIcon: {
 		fontSize: "1rem",
-		transition: "all 0.2s ease-in-out"
+		transition: "all 0.2s ease-in-out",
 	}
 }
 
 function DraggableColorBox(props) {
-	const { name, color, classes } = props;
+	const { name, color, classes, handleDelete } = props;
 	return (
 		<div className={classes.root} style={{backgroundColor: color}}>
 			<div className={classes.boxContent} >
 				<span>
 					{name}
 				</span>
-				<DeleteForeverIcon className={classes.deleteIcon} />
+				<DeleteForeverIcon className={classes.deleteIcon} onClick={handleDelete}/>
 			</div>
 		</div>
 	)

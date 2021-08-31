@@ -31,7 +31,12 @@ constructor(props) {
         <Route 
           exact 
           path="/palette/new" 
-          render={(routeProps) => <NewPaletteForm savePalette={this.savePalette} {...routeProps}/> } 
+          render={(routeProps) => 
+            <NewPaletteForm 
+              {...routeProps}
+              allPalettes={this.state.allPalettes}
+              savePalette={this.savePalette} 
+            /> } 
         />
         <Route 
           exact 

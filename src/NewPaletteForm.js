@@ -13,7 +13,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import DraggableColorBox from './DraggableColorBox';
+import DraggableColorList from './DraggableColorList';
+import { arrayMove } from 'react-sortable-hoc';
 
 const drawerWidth = 400;
 
@@ -92,6 +93,7 @@ class NewPaletteForm extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.saveCustomPalette = this.saveCustomPalette.bind(this);
     this.removeColor = this.removeColor.bind(this);
+    this.onSortEnd = this.onSortEnd.bind(this);
 	}
   componentDidMount() {
     // custom rule for text validator
@@ -145,6 +147,11 @@ class NewPaletteForm extends Component {
       allColors: this.state.allColors.filter( color => color.name !== colorName )
     })
   }
+  onSortEnd({oldIndex, newIndex}) {
+    this.setState(({allColors}) => ({
+      allColors: arrayMove(allColors, oldIndex, newIndex),
+    }));
+  };
 
   render() {
     const { classes } = this.props;
@@ -249,14 +256,12 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          {allColors.map(colorObj => (
-            <DraggableColorBox 
-              color={colorObj.color} 
-              name={colorObj.name}
-              key={colorObj.name}
-              handleDelete={() => this.removeColor(colorObj.name)} 
-            />
-          ))}
+          <DraggableColorList 
+            colors={allColors} 
+            removeColor={this.removeColor} 
+            axis="xy"
+            onSortEnd={this.onSortEnd}
+          />
         </main>
       </div>
     );

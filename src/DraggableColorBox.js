@@ -11,7 +11,7 @@ const styles = {
 		height: "25%",
 		margin: "0 auto",
 		display: "inline-block",
-		marginBottom: "-4px",
+		marginBottom: "-6px",
 		"&:hover svg": {
 			color: "white",
 			transform: "scale(1.5)"
@@ -32,7 +32,7 @@ const styles = {
 	},
 	deleteIcon: {
 		fontSize: "1rem",
-		transition: "all 0.2s ease-in-out",
+		transition: "all 0.3s ease-in-out",
 	}
 }
 

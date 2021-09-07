@@ -6,7 +6,6 @@ export default {
 		border: "1px solid black",
 		borderRadius: "5px",
 		padding: "0.5rem",
-		overflow: "hidden",
 		"&:hover": {
 			cursor: "pointer"
 		}

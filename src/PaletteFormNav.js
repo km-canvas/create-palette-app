@@ -63,11 +63,11 @@ export class PaletteFormNav extends Component {
                 validators={[
                 'required', 
                 'isPaletteNameUnique',
-              ]}
+                ]}
               errorMessages={[
                 'This field is required', 
                 'This palette name already exists, name must be unique',
-              ]}
+                ]}
               />
               <Button variant="contained" color="primary" type="submit">
                   Save Palette

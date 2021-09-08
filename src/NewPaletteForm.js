@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import LayersClear from '@material-ui/icons/LayersClear';
+import FindReplace from '@material-ui/icons/FindReplace';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DraggableColorList from './DraggableColorList';
 import { arrayMoveImmutable } from 'array-move';
@@ -27,6 +29,8 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    display: "flex",
+    alignItems: "center"
   },
   drawerHeader: {
     display: 'flex',
@@ -52,6 +56,29 @@ const styles = theme => ({
     }),
     marginLeft: 0,
   },
+  drawerContainer: {
+    width: "90%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  buttonContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    "& Button": {
+      fontWeight: "500"
+    }
+  },
+  clearButton: {
+    width: "calc(50% - 5px)"  
+  },
+  randomButton: {
+    width: "calc(50% - 5px)",
+    background: "linear-gradient(45deg, #ff000080, #ffa50080, #ffff0080, #00800080, #0000ff80, #4b008280, #ee82ee80, #ff000080)"
+  }
 });
 
 class NewPaletteForm extends Component {
@@ -146,31 +173,38 @@ class NewPaletteForm extends Component {
             </IconButton>
           </div>
           <Divider />
-					<Typography variant="h4">
-						Design Your Palette
-					</Typography>
-          <div>
-  					<Button 
-              variant="contained" 
-              color="secondary"
-              onClick={this.clearPalette}
+          <div className={classes.drawerContainer}>
+            <Typography 
+              variant="h4"
+              gutterBottom
             >
-              Clear Palette
-            </Button>
-	  				<Button 
-              variant="contained" 
-              color="primary"
-              onClick={this.addRandomColor}
-              disabled={paletteIsFull}
-            >
-              Random Color
-            </Button>
+              Design Your Palette
+            </Typography>
+            <div className={classes.buttonContainer}>
+              <Button
+                className={classes.clearButton}
+                startIcon={<LayersClear />}
+                variant="contained" 
+                onClick={this.clearPalette}
+              >
+                Clear Palette
+              </Button>
+              <Button
+                className={classes.randomButton}
+                startIcon={<FindReplace />}  
+                variant="contained" 
+                onClick={this.addRandomColor}
+                disabled={paletteIsFull}
+              >
+                Random Color
+              </Button>
+            </div>
+            <ColorPickerForm
+              colors={allColors}
+              addColor={this.addNewColor}
+              paletteIsFull={paletteIsFull}
+            />
           </div>
-          <ColorPickerForm
-            colors={allColors}
-            addColor={this.addNewColor}
-            paletteIsFull={paletteIsFull}
-          />
         </Drawer>
         <main
           className={classNames(classes.content, {

@@ -1,14 +1,43 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { ChromePicker } from 'react-color';
+import { SwatchesPicker } from 'react-color';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
 import AddToPhotos from '@material-ui/icons/AddToPhotos';
+// import transitions from '@material-ui/core/styles/transitions';
 
 const styles = {
+	colorPickerCtn: {
+		width: "100%",
+		marginBottom: "1rem",
+		height: "300px"
+	},
 	chromePicker: {
-		minWidth: "100% !important",
-		margin: "2rem 0 1rem"
+		minWidth: "100%",
+	},
+	swatchPicker: {
+		minWidth: "100%",
+	},
+	switchPickerCtn: {
+		height: "50px",
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		margin: "1rem 0 0",
+		backgroundColor: "white",
+		borderRadius: "2px 2px 0 0",
+		boxShadow: "rgb(0 0 0 / 30%) 0px 0px 2px, rgb(0 0 0 / 30%) 0px 4px 8px",
+	},
+	activeTxt: {
+		color: "black",
+		transition: "color 0.2s"
+	},
+	nonActiveTxt: {
+		color: "gray",
+		opacity: "70%",
+		transition: "color 0.2s"
 	},
 	addColorBtn: {
 		width: "100%",
@@ -28,10 +57,12 @@ export class ColorPickerForm extends Component {
 		this.state = {
       currentColor: "#00ddc6",
       newColorName: "",
+			switched: false
 		}
     this.handleColorChange = this.handleColorChange.bind(this);
 		this.handleNameChange = this.handleNameChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.switchPicker = this.switchPicker.bind(this);
 	}
 	componentDidMount() {
     ValidatorForm.addValidationRule('isColorNameUnique', value => 
@@ -59,16 +90,43 @@ export class ColorPickerForm extends Component {
 		this.props.addColor(newColor);
 		this.setState({ newColorName: "" }) 
 	}
+	switchPicker(evt) {
+		this.setState({ [evt.target.value]: evt.target.checked })
+	}
+
 	render() {
 		const { paletteIsFull, classes } = this.props;
-		const { currentColor, newColorName } = this.state;
+		const { currentColor, newColorName, switched } = this.state;
+		let colorPicker;
+		if(switched) {
+			colorPicker = (
+				<SwatchesPicker 
+					onChangeComplete={this.handleColorChange} 
+					className={classes.swatchPicker}
+					height="300px"
+				/>)
+		} else {
+			colorPicker = (	
+				<ChromePicker color={currentColor} disableAlpha={true}
+				onChangeComplete={this.handleColorChange} 
+				className={classes.chromePicker}
+				/>)
+		}
 		return (
 			<div>
-				<ChromePicker 
-					color={currentColor} 
-					onChangeComplete={this.handleColorChange} 
-					className={classes.chromePicker}
-				/>
+				<div className={classes.switchPickerCtn}>
+					<h4 className={!switched ? `${classes.activeTxt}` : `${classes.nonActiveTxt}`}>Color Picker</h4>
+					<Switch 
+						checked={switched} 
+						onChange={this.switchPicker} 
+						value="switched" 
+						color="default" 
+					/>
+					<h4 className={switched ? `${classes.activeTxt}` : `${classes.nonActiveTxt}`}>Swatch Picker</h4>
+				</div>
+				<div className={classes.colorPickerCtn}>
+					{colorPicker}
+				</div>
 				<ValidatorForm onSubmit={this.handleSubmit} instantValidate={false}>
 					<TextValidator
 						className={classes.colorNameInput}

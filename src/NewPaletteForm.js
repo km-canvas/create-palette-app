@@ -115,13 +115,10 @@ class NewPaletteForm extends Component {
   handleNameChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value })
   }
-  saveCustomPalette(newPaletteName) {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.toLowerCase().replace(/ /g, "-"), 
-      colors: this.state.allColors
-    };
-    this.props.savePalette(newPalette);
+  saveCustomPalette(newPaletteObj) {
+    newPaletteObj.id = newPaletteObj.paletteName.toLowerCase().replace(/ /g, "-");
+    newPaletteObj.colors = this.state.allColors;
+    this.props.savePalette(newPaletteObj);
     this.props.history.push("/");
   }
   removeColor(colorName) {

@@ -6,8 +6,9 @@ export default {
 		border: "1px solid black",
 		borderRadius: "5px",
 		padding: "0.5rem",
-		"&:hover": {
-			cursor: "pointer"
+		cursor: "pointer",
+		"&:hover div:first-child": {
+			opacity: 1
 		}
 	},
 	colors: {
@@ -37,5 +38,26 @@ export default {
 		display: "inline-block",
 		margin: "0 auto -4px",
 		position: "relative"
+	},
+	deleteCtn: {
+		position: "absolute",
+		right: "-10px",
+		top: "-10px",
+		zIndex: 10,
+		opacity: 0,
+	},
+	deleteIcon: {
+		width: "30px",
+		height: "30px",
+		padding: "4px",
+		color: "white",
+		backgroundColor: "#eb3d30",
+		borderRadius: "5px",
+		boxShadow: "0 0px 2px #fff, 2px 2px 4px #000",
+		opacity: 0.5,
+		transition: "all 0.3s ease-in-out",
+		"&:hover": {
+			opacity: 1,
+		}
 	}
 }

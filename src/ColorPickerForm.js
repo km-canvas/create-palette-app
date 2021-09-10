@@ -3,9 +3,10 @@ import { withStyles } from '@material-ui/core/styles';
 import { ChromePicker } from 'react-color';
 import { SwatchesPicker } from 'react-color';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import classNames from 'classnames';
 import Switch from '@material-ui/core/Switch';
 import Button from '@material-ui/core/Button';
-import AddToPhotos from '@material-ui/icons/AddToPhotos';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import styles from './styles/ColorPickerFormStyles';
 
 export class ColorPickerForm extends Component {
@@ -72,14 +73,14 @@ export class ColorPickerForm extends Component {
 		return (
 			<div>
 				<div className={classes.switchPickerCtn}>
-					<h4 className={!switched ? `${classes.activeTxt}` : `${classes.nonActiveTxt}`}>Color Picker</h4>
+					<h4 className={classNames(classes.activeTxt, switched && classes.nonActiveTxt)}>Color Picker</h4>
 					<Switch 
 						checked={switched} 
 						onChange={this.switchPicker} 
 						value="switched" 
 						color="default" 
 					/>
-					<h4 className={switched ? `${classes.activeTxt}` : `${classes.nonActiveTxt}`}>Swatch Picker</h4>
+					<h4 className={classNames(classes.activeTxt, !switched && classes.nonActiveTxt)}>Swatch Picker</h4>
 				</div>
 				<div className={classes.colorPickerCtn}>
 					{colorPicker}
@@ -105,7 +106,7 @@ export class ColorPickerForm extends Component {
 					/>
 					<Button
 						className={classes.addColorBtn}
-						startIcon={<AddToPhotos />} 
+						startIcon={<LibraryAddIcon />} 
 						style={{backgroundColor: paletteIsFull ? "gray" : currentColor}} 
 						variant="contained" 
 						color="primary"

@@ -10,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 
 export class PaletteFormNav extends Component {
   constructor(props) {
@@ -49,11 +49,11 @@ export class PaletteFormNav extends Component {
           <Toolbar disableGutters={!open}>
             <IconButton
               color="inherit"
-              aria-label="Open drawer"
+              aria-label="Open Palette Editor"
               onClick={this.props.handleDrawerOpen}
               className={classNames(classes.menuButton, open && classes.hide)}
             >
-              <MenuIcon />
+              <LibraryAddIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
               Create A Palette
@@ -61,9 +61,14 @@ export class PaletteFormNav extends Component {
           </Toolbar>
           <div className={classes.navBtnGroup}>
             <Link to="/">
-              <Button className={classes.navBtn} variant="contained" color="secondary">Go Back</Button>
+              <Button className={classes.navBtn} variant="contained">Go Back</Button>
             </Link>
-            <Button className={classes.navBtn} variant="contained" color="primary" onClick={this.showForm}>
+            <Button 
+              className={classes.navBtn} 
+              variant="contained" 
+              color="primary"
+              onClick={this.showForm}
+            >
               Save Palette
             </Button>
           </div>

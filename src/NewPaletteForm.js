@@ -100,8 +100,8 @@ class NewPaletteForm extends Component {
           }}
         >
           <div className={classes.drawerHeader}>
-            <IconButton onClick={this.handleDrawerClose}>
-              <ChevronLeftIcon />
+            <IconButton aria-label="Minimize Palette Editor" onClick={this.handleDrawerClose}>
+              <ChevronLeftIcon fontSize="large" />
             </IconButton>
           </div>
           <Divider />

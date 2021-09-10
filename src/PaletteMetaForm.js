@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
 
-export class PaletteMetaForm extends Component {
+class PaletteMetaForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -40,7 +42,6 @@ export class PaletteMetaForm extends Component {
 		this.setState({ formStage: "nameForm", newPaletteEmoji: "" })
 	}
 	saveEmoji(emoji) {
-		console.log(emoji)
 		this.setState({ newPaletteEmoji: emoji.native})
 	}
 	savePalette() {
@@ -57,27 +58,36 @@ export class PaletteMetaForm extends Component {
 
     return (
 			<div>
-				<Dialog 
+				<Dialog
+					fullWidth={true}
+					maxWidth={'sm'}
 					open={formStage === "emojiForm"}
 					onClose={hideForm}
 					aria-labelledby="form-dialog-title"
 				>
 					<DialogTitle id="form-dialog-title">Choose an Emoji for this Palette.</DialogTitle>
+					<Divider />
 					<ValidatorForm onSubmit={this.savePalette}>
-						<Picker title="Pick a Palette Emoji" onSelect={this.saveEmoji} />
+						<Picker 
+							sheetSize="32"
+							style={{width: "100%"}} 
+							onSelect={this.saveEmoji}
+							title=""
+							emoji=""
+						/>
+						<TextValidator
+							fullWidth
+							margin="normal"
+							label="Selected Emoji"
+							value={newPaletteEmoji} 
+							validators={['required']}
+							errorMessages={['This field is required']}
+						/>
 						<DialogContentText>
-							Some browsers may display emojis differently. Your selected emoji will display like this:
-							</DialogContentText>
-							<TextValidator 
-								fullWidth
-								margin="normal"
-								label="Palette Emoji"
-								value={newPaletteEmoji} 
-								validators={['required']}
-								errorMessages={['This field is required']}
-							/>
+							Please note: Some browsers may display emojis differently.
+						</DialogContentText>
 						<DialogActions>
-							<Button variant="outlined" onClick={this.showNameForm} color="primary">
+							<Button variant="outlined" onClick={this.showNameForm} startIcon={<ChevronLeftIcon />} >
 								Change Palette Name
 							</Button>
 							<Button variant="contained" color="primary" type="submit">
@@ -87,16 +97,16 @@ export class PaletteMetaForm extends Component {
 					</ValidatorForm>
 				</Dialog>
 				<Dialog
+					fullWidth={true}
+					maxWidth={'sm'}
 					open={formStage === "nameForm"}
 					onClose={hideForm}
 					aria-labelledby="form-dialog-title"
 				>
 					<DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
+					<Divider />
 					<ValidatorForm onSubmit={this.showEmojiForm}>
 						<DialogContent>
-							<DialogContentText>
-								Enter a name for your palette.
-							</DialogContentText>
 							<TextValidator 
 								fullWidth
 								margin="normal"
@@ -115,7 +125,7 @@ export class PaletteMetaForm extends Component {
 							/>
 						</DialogContent>
 						<DialogActions>
-							<Button variant="outlined" onClick={hideForm} color="primary">
+							<Button variant="outlined" onClick={hideForm}>
 								On Second Thought...
 							</Button>
 							<Button variant="contained" color="primary" type="submit">
@@ -129,4 +139,4 @@ export class PaletteMetaForm extends Component {
   }
 }
 
-export default PaletteMetaForm
+export default PaletteMetaForm;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,6 +11,20 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
+
+const DialogStyles = withStyles({
+	"@global": {
+		".MuiDialogTitle-root": {
+			backgroundColor: "#e0e0e0"
+		},
+		".emoji-mart-search": {
+			marginBottom: "6px"
+		},
+		".emoji-mart": {
+			width: "100% !important"
+		}
+	}
+})(() => null);
 
 class PaletteMetaForm extends Component {
 	constructor(props) {
@@ -55,9 +70,9 @@ class PaletteMetaForm extends Component {
 	render() {
 		const { hideForm } = this.props;
 		const { newPaletteName, newPaletteEmoji, formStage } = this.state;
-
     return (
 			<div>
+				<DialogStyles />
 				<Dialog
 					fullWidth={true}
 					maxWidth={'sm'}
@@ -65,14 +80,15 @@ class PaletteMetaForm extends Component {
 					onClose={hideForm}
 					aria-labelledby="form-dialog-title"
 				>
-					<DialogTitle id="form-dialog-title">Choose an Emoji for this Palette.</DialogTitle>
+					<DialogTitle id="form-dialog-title">Choose an Emoji for <q>{newPaletteName}</q> Palette.</DialogTitle>
 					<Divider />
 					<ValidatorForm onSubmit={this.savePalette}>
+						<DialogContent>
 						<Picker 
-							sheetSize="32"
-							style={{width: "100%"}} 
+							set="google"
+							color="#3f51b5"
 							onSelect={this.saveEmoji}
-							title=""
+							title="Hover over emoji to preview"
 							emoji=""
 						/>
 						<TextValidator
@@ -83,9 +99,10 @@ class PaletteMetaForm extends Component {
 							validators={['required']}
 							errorMessages={['This field is required']}
 						/>
-						<DialogContentText>
-							Please note: Some browsers may display emojis differently.
+						<DialogContentText variant="caption">
+							<em>Please note: Some browsers may display emojis differently.</em>
 						</DialogContentText>
+						</DialogContent>
 						<DialogActions>
 							<Button variant="outlined" onClick={this.showNameForm} startIcon={<ChevronLeftIcon />} >
 								Change Palette Name

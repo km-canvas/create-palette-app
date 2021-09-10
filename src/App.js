@@ -10,9 +10,8 @@ import { generatePalette } from "./colorHelpers";
 class App extends Component {
 constructor(props) {
   super(props);
-  this.state = {
-    allPalettes: seedPalettes
-  };
+  const savedPalettes = JSON.parse(window.localStorage.getItem("allPalettes"))
+  this.state = { allPalettes: savedPalettes || seedPalettes};
   this.findPalette = this.findPalette.bind(this)
   this.savePalette = this.savePalette.bind(this)
 }
@@ -23,7 +22,13 @@ constructor(props) {
     })
   }
   savePalette(newPalette) {
-    this.setState({ allPalettes: [...this.state.allPalettes, newPalette] })
+    this.setState(
+      { allPalettes: [...this.state.allPalettes, newPalette] },
+      this.syncLocalStorage
+      )
+  }
+  syncLocalStorage() {
+    window.localStorage.setItem("allPalettes", JSON.stringify(this.state.allPalettes))
   }
   render() {
     return (

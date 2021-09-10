@@ -14,6 +14,7 @@ constructor(props) {
   this.state = { allPalettes: savedPalettes || seedPalettes};
   this.findPalette = this.findPalette.bind(this)
   this.savePalette = this.savePalette.bind(this)
+  this.deletePalette = this.deletePalette.bind(this)
 }
 
   findPalette(id) {
@@ -29,6 +30,12 @@ constructor(props) {
   }
   syncLocalStorage() {
     window.localStorage.setItem("allPalettes", JSON.stringify(this.state.allPalettes))
+  }
+  deletePalette(id) {
+    this.setState( oldState => (
+      {allPalettes: oldState.allPalettes.filter(palette => palette.id !== id)}),
+      this.syncLocalStorage  
+    )
   }
   render() {
     return (
@@ -69,7 +76,11 @@ constructor(props) {
         <Route 
           exact 
           path='/' 
-          render={ (routeProps) => <PaletteList palettes={this.state.allPalettes} {...routeProps} /> } 
+          render={ (routeProps) => (
+            <PaletteList 
+              palettes={this.state.allPalettes} 
+              deletePalette={this.deletePalette}
+              {...routeProps} />) } 
         />
       </Switch>
     );

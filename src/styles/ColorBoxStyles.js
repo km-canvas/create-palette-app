@@ -1,4 +1,5 @@
 import chroma from 'chroma-js';
+import screen from './mediaQueries'
 
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
@@ -12,6 +13,18 @@ export default {
 		"&:hover button": {
 			opacity: "1",
 			transition: "0.5s"
+		},
+		[screen.down("lg")]: {
+			width: "25%",
+			height: props => props.showingFullPalette ? "20%" : "30%",
+		},
+		[screen.down("md")]: {
+			width: "50%",
+			height: props => props.showingFullPalette ? "10%" : "20%",
+		},
+		[screen.down("xs")]: {
+			width: "100%",
+			height: props => props.showingFullPalette ? "5%" : "10%",
 		}
 	},
 	copyText: { 
@@ -106,8 +119,8 @@ export default {
 			opacity: "1",
 			webkitTransform: "translateY(0px)",
 			mozTransform: "translateY(0px)",
-			transform: "translateY(0px)"
-,			},
+			transform: "translateY(0px)",
+			},
 		"&:focus::after": {
 			opacity: "1",
 			webkitTransform: "translateY(0px)",

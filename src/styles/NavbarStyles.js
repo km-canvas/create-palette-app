@@ -50,6 +50,9 @@ export default {
 	},
 	selectContainer: {
 		marginLeft: "auto",
-		marginRight: "1rem"
+		marginRight: "1rem",
+		"& small": {
+			color: "rgba(0, 0, 0, 0.5)",
+		}
 	}
 }

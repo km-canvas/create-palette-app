@@ -1,3 +1,4 @@
+import screen from "./mediaQueries";
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
 	Palette: {
@@ -28,6 +29,7 @@ export default {
 			left: "calc(50% - 50px)",
 			outline: "none",
 			border: "none",
+			borderRadius: "5px",
 			background: "rgba(255,255,255,0.3)",
 			fontSize: "1rem",
 			lineHeight: "30px",
@@ -40,9 +42,10 @@ export default {
 				left: "0",
 				top: "0",
 				width: "100%",
-				height: "2px",
+				height: "10px",
+				borderTop: "1px solid #fff",
+				borderRadius: "5px",
 				content: "' '",
-				background: "white",
 				opacity: "0",
 				webkitTransition: "opacity 0.3s, -webkit-transform 0.3s",
 				mozTransition: "opacity 0.3s, -webkit-transform 0.3s",
@@ -56,9 +59,10 @@ export default {
 				left: "0",
 				bottom: "0",
 				width: "100%",
-				height: "2px",
+				height: "10px",
+				borderBottom: "1px solid #fff",
+				borderRadius: "5px",
 				content: "' '",
-				background: "white",
 				opacity: "0",
 				webkitTransition: "opacity 0.3s, -webkit-transform 0.3s",
 				mozTransition: "opacity 0.3s, -webkit-transform 0.3s",
@@ -97,6 +101,14 @@ export default {
 				mozTransform: "translateY(0px)",
 				transform: "translateY(0px)"
 			}
+		},
+		[screen.down("lg")]: {
+			width: "50%",
+			height: "20%"
+		},
+		[screen.down("xs")]: {
+			width: "100%",
+			height: "10%"
 		}
 	}
 }

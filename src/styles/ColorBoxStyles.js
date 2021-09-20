@@ -15,10 +15,6 @@ export default {
 			transition: "0.5s"
 		},
 		[screen.down("lg")]: {
-			width: "25%",
-			height: props => props.showingFullPalette ? "20%" : "30%",
-		},
-		[screen.down("md")]: {
 			width: "50%",
 			height: props => props.showingFullPalette ? "10%" : "20%",
 		},
@@ -55,6 +51,7 @@ export default {
 		left: "calc(50% - 50px)",
 		outline: "none",
 		border: "none",
+		borderRadius: "5px",
 		background: "rgba(255,255,255,0.3)",
 		fontSize: "1rem",
 		lineHeight: "30px",
@@ -68,9 +65,10 @@ export default {
 			left: "0",
 			top: "0",
 			width: "100%",
-			height: "2px",
+			height: "10px",
+			borderTop: props => chroma(props.background).luminance() >= 0.6 ? "1px solid rgba(0,0,0,0.5)" : "1px solid white",
+			borderRadius: "5px",
 			content: "' '",
-			background: props => chroma(props.background).luminance() >= 0.6 ? "rgba(0,0,0,0.5)" : "white",
 			opacity: "0",
 			webkitTransition: "opacity 0.3s, -webkit-transform 0.3s",
 			mozTransition: "opacity 0.3s, -webkit-transform 0.3s",
@@ -84,9 +82,10 @@ export default {
 			left: "0",
 			bottom: "0",
 			width: "100%",
-			height: "2px",
+			height: "10px",
+			borderBottom: props => chroma(props.background).luminance() >= 0.6 ? "1px solid rgba(0,0,0,0.5)" : "1px solid white",
+			borderRadius: "5px",
 			content: "' '",
-			background: props => chroma(props.background).luminance() >= 0.6 ? "rgba(0,0,0,0.5)" : "white",
 			opacity: "0",
 			webkitTransition: "opacity 0.3s, -webkit-transform 0.3s",
 			mozTransition: "opacity 0.3s, -webkit-transform 0.3s",
@@ -176,10 +175,19 @@ export default {
 			width: "100%",
 			marginBottom: "0",
 			padding: "1rem",
+			[screen.down("md")]: {
+				fontSize: "6rem"
+			},
+			[screen.down("xs")]: {
+				fontSize: "4rem"
+			},
 		},
 		"& p": {
 			fontSize: "2rem",
 			fontWeight: "100",
+			[screen.down("xs")]: {
+				fontSize: "1.5rem"
+			}
 		}
 	},
 	showMessage: {

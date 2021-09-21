@@ -1,3 +1,5 @@
+import screen from './mediaQueries';
+
 const styles = {
 	root: {
 		position: "relative",
@@ -9,6 +11,14 @@ const styles = {
 		"&:hover svg": {
 			color: "white",
 			transform: "scale(1.5)"
+		},
+		[screen.down('lg')]: {
+			width: "25%",
+			height: "20%"
+		},
+		[screen.down('md')]: {
+			width: "100%",
+			height: "5%"
 		}
 	},
 	boxContent: {

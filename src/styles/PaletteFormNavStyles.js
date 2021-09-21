@@ -1,4 +1,5 @@
 import { DRAWER_WIDTH } from "../constants";
+import screen from './mediaQueries';
 const drawerWidth = DRAWER_WIDTH;
 const styles = theme => ({
   root: {
@@ -31,12 +32,23 @@ const styles = theme => ({
   },
   navBtnGroup: {
     marginRight: "1rem",
+    display: "inline-flex",
+    flexFlow: "row wrap",
+    justifyContent: "flex-end",
     "& a": {
       textDecoration: "none"
+    },
+    [screen.down('md')]: {
+      marginRight: "0.5rem",
     }
   },
   navBtn: {
+    width: "120px",
+    padding: "0.2rem",
     margin: "0 0.5rem",
+    [screen.down('md')]: {
+      margin: "0 0.2rem",
+    }
   }
 })
 export default styles;

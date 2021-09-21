@@ -1,3 +1,4 @@
+import screen from './mediaQueries';
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
 	PaletteFooter: {
@@ -6,7 +7,10 @@ export default {
 		display: "flex",
 		justifyContent: "flex-end",
 		alignItems: "center",
-		fontWeight: "bold"
+		fontWeight: "bold",
+		[screen.down("md")]: {
+			display: "none"
+		}
 	},
 	emoji: {
 		fontSize: "1.5rem",

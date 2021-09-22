@@ -25,6 +25,7 @@ class NewPaletteForm extends Component {
 		this.state = {
 			open: true,
       allColors: this.props.allPalettes[0].colors,
+      hexShowing: false,
 		}
 		this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
 		this.handleDrawerClose = this.handleDrawerClose.bind(this);
@@ -35,6 +36,8 @@ class NewPaletteForm extends Component {
     this.onSortEnd = this.onSortEnd.bind(this);
     this.clearPalette = this.clearPalette.bind(this);
     this.addRandomColor = this.addRandomColor.bind(this);
+    this.showColorHex = this.showColorHex.bind(this)
+    this.hideColorHex = this.hideColorHex.bind(this)
 	}
 
   handleDrawerOpen() {
@@ -76,10 +79,15 @@ class NewPaletteForm extends Component {
     const randomColor = excludeCurrentColors[randomIdx];
     this.setState({ allColors: [...this.state.allColors, randomColor] })
   }
-
+  showColorHex() {
+    this.setState({ hexShowing: true })
+  }
+  hideColorHex() {
+    this.setState({ hexShowing: false })
+  }
   render() {
     const { classes, maxColors, allPalettes } = this.props;
-    const { open, allColors } = this.state;
+    const { open, allColors, hexShowing } = this.state;
     const paletteIsFull = allColors.length >= maxColors;
 
     return (
@@ -89,6 +97,9 @@ class NewPaletteForm extends Component {
           palettes={allPalettes} 
           handleSubmit={this.saveCustomPalette} 
           handleDrawerOpen={this.handleDrawerOpen}
+          showHex={this.showColorHex}
+          hideHex={this.hideColorHex}
+          hexShowing={hexShowing}
         />
         <Drawer
           className={classes.drawer}
@@ -149,6 +160,7 @@ class NewPaletteForm extends Component {
             removeColor={this.removeColor} 
             axis="xy"
             onSortEnd={this.onSortEnd}
+            hexShowing={hexShowing}
           />
         </main>
       </div>

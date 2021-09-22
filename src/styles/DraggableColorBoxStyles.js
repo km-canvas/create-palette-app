@@ -21,6 +21,13 @@ const styles = {
 			height: "5%"
 		}
 	},
+	colorHexContent: {
+		position: "absolute",
+		left: "0",
+		top: "0",
+		color: "rgba(0, 0, 0, 0.5)",
+		padding: "0.4em",
+	},
 	boxContent: {
 		position: "absolute",
 		left: "0",

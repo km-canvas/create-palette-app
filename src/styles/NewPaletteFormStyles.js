@@ -1,3 +1,4 @@
+import navPrismGradient from "./navbg.svg";
 import { DRAWER_WIDTH } from "../constants";
 const drawerWidth = DRAWER_WIDTH;
 const styles = theme => ({
@@ -11,7 +12,12 @@ const styles = theme => ({
   drawerPaper: {
     width: drawerWidth,
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#CCC",
+		backgroundImage: `url(${navPrismGradient})`,
+    // background by SVGBackgrounds.com
+		backgroundAttachment: "fixed",
+		backgroundSize: "cover",
   },
   drawerHeader: {
     display: 'flex',

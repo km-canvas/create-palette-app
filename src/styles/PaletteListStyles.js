@@ -1,12 +1,19 @@
 import screen from "./mediaQueries";
+import bgPrismGradient from "./bgPrism.svg";
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
 	root: {
-		backgroundColor: "gray",
 		height: "100%",
+		minHeight: "100vh",
 		display: "flex",
 		alignItems: "flex-start",
-		justifyContent: "center"
+		justifyContent: "center",
+		backgroundColor: "#EFE9DB",
+		backgroundImage: `url(${bgPrismGradient})`,
+		// background by SVGBackgrounds.com
+		backgroundAttachment: "fixed",
+		backgroundSize: "cover",
+		paddingBottom: "5vh"
 	},
 	container: {
 		width: "60%",
@@ -25,11 +32,14 @@ export default {
 		display: "flex",
 		width: "100%",
 		justifyContent: "space-between",
-		color: "white",
+		color: "#333",
 		alignItems: "center",
 		"& a": {
-			color: "white"
+			color: "#333"
 		}
+	},
+	heading: {
+		fontSize: "2rem",
 	},
 	palettes: {
 		boxSizing: "border-box",

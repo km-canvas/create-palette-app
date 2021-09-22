@@ -1,5 +1,7 @@
 import { DRAWER_WIDTH } from "../constants";
 import screen from './mediaQueries';
+import navPrismGradient from "./navbg.svg";
+
 const drawerWidth = DRAWER_WIDTH;
 const styles = theme => ({
   root: {
@@ -17,6 +19,11 @@ const styles = theme => ({
     justifyContent: "space-between",
     alignItems: "center",
     height: "64px",
+    backgroundColor: "#FFF",
+		backgroundImage: `url(${navPrismGradient})`,
+		backgroundAttachment: "fixed",
+		backgroundSize: "cover",
+    // background by SVGBackgrounds.com
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,

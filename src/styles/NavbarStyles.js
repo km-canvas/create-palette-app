@@ -1,4 +1,5 @@
 import screen from './mediaQueries';
+import navPrismGradient from "./navbg.svg";
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
 	Navbar: {
@@ -6,6 +7,13 @@ export default {
 		alignItems: "center",
 		justifyContent: "flex-start",
 		height: "5vh",
+		boxShadow: "0 0 1px #fff, 0 1px 2px #333",
+		zIndex: 2,	
+		backgroundColor: "#FFF",
+		backgroundImage: `url(${navPrismGradient})`,
+		backgroundAttachment: "fixed",
+		backgroundSize: "cover",
+		// background by SVGBackgrounds.com
 		[screen.down('md')]: {
 			display: "inline-block",
 			height: "10vh"
@@ -19,8 +27,6 @@ export default {
 		padding: "0 13px",
 		fontFamily: "'Roboto', sans-serif",
 		fontSize: "22px",
-		backgroundColor: "rgba(228,232,233,1.0)",
-		borderRadius: "0 300px 300px 0",
 		"& a": {
 			textDecoration: "none",
 			color: "#000"
@@ -48,31 +54,32 @@ export default {
 		},
 		"& .rc-slider-rail": {
 			marginTop: "-2px",
+			marginLeft: "-3px",
 			height: "12px",
-			background: "linear-gradient(to right, #e9e9e9, #6f6f6f)",
-			[screen.down("md")]: {
-				boxShadow: "0 0 1px #00000080, 0 1px 2px #000"		
-			}
+			width: "calc(100% + 10px)",
+			background: "linear-gradient(to right, #eee, #6f8b98)",
+			boxShadow: "0 0 1px #fff, 0 1px 2px #000",
 		},
 		"& .rc-slider-handle, .rc-slider-handle:active, .rc-slider-handle:focus, .rc-slider-handle:hover": {
 			outline: "none",
 			boxShadow: "none",
-			width: "18px",
-			height: "18px",
-			marginTop: "-5px",
+			width: "20px",
+			height: "20px",
+			marginTop: "-6px",
 		},
 		"& .rc-slider-handle, .rc-slider-handle:focus": {
-			backgroundColor: "#a9a9a9",
-			border: "2px solid #000",
-			marginLeft: "5px"
+			backgroundColor: "#eee",
+			border: "2px solid #6f8b98",
+			marginLeft: "3px"
 		},
 		"& .rc-slider-handle:active, .rc-slider-handle:hover": {
-			backgroundColor: "#000",
-			border: "2px solid #000"
+			backgroundColor: "#6f8b98",
+			border: "2px solid #eee"
 		},
 		"& .rc-slider-dot": {
 			top: "0px",
 			bottom: "0px",
+			marginLeft: "-3px",
 			"&:first-of-type, &:last-of-type": {
 				display: "none"
 			}

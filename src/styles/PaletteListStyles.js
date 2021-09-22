@@ -2,6 +2,15 @@ import screen from "./mediaQueries";
 import bgPrismGradient from "./bgPrism.svg";
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
+	"@global": {
+		".fade-exit": {
+			opacity: 1,
+		},
+		".fade-exit-active": {
+			opacity: 0,
+			transition: "opacity 0.5s ease-out",
+		}
+	},
 	root: {
 		height: "100%",
 		minHeight: "100vh",

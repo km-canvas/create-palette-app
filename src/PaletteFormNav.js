@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PaletteMetaForm from './PaletteMetaForm';
-import styles from './styles/PaletteFormNavStyles';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -15,18 +14,8 @@ import IconButton from '@material-ui/core/IconButton';
 import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
-
-const TooltipStyles = withStyles({
-	"@global": {
-		".MuiTooltip-tooltip": {
-			fontSize: "0.8rem",
-			padding: "0.5rem"
-		},
-		".MuiTooltip-tooltipPlacementBottom": {
-			marginTop: "0px",
-		}
-	}
-})(() => null);
+import styles from './styles/PaletteFormNavStyles';
+import TooltipStyles from './styles/tooltipStyles';
 
 export class PaletteFormNav extends Component {
   constructor(props) {

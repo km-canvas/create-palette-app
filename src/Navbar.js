@@ -16,18 +16,7 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import styles from './styles/NavbarStyles';
-
-const TooltipStyles = withStyles({
-	"@global": {
-		".MuiTooltip-tooltip": {
-			fontSize: "0.8rem",
-			padding: "0.5rem"
-		},
-		".MuiTooltip-tooltipPlacementBottom": {
-			marginTop: "0px",
-		}
-	}
-})(() => null);
+import TooltipStyles from './styles/tooltipStyles';
 
 class Navbar extends Component {
 	constructor(props) {

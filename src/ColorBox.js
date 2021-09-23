@@ -38,7 +38,10 @@ class ColorBox extends Component {
 					</div>
 					{showingFullPalette && (
 						<Link to={`/palette/${paletteId}/${colorId}`} onClick={e => e.stopPropagation()}>
-							<span className={classes.seeMore}>MORE</span>
+							<span className={classes.seeMore}>
+								MORE 
+								<span>&raquo;</span>
+							</span>
 						</Link>
 					)}
 				</div>	

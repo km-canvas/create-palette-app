@@ -51,7 +51,8 @@ class PaletteMetaForm extends Component {
 			paletteName: this.state.newPaletteName, 
 			emoji: this.state.newPaletteEmoji
 		}
-		this.props.handleSubmit(newPalette)
+		this.props.handleSubmit(newPalette);
+		this.setState({ formStage: "" })
 	}
 
 	render() {

@@ -9,7 +9,7 @@ export default {
 		alignItems: "center",
 		fontWeight: "bold",
 		boxShadow: "0 0 1px #fff, 0 -1px 2px #5e5e5e",
-		zIndex: 2,	
+		zIndex: 1,	
 		backgroundColor: "#FFF",
 		backgroundImage: `url(${navPrismGradient})`,
 		// background by SVGBackgrounds.com

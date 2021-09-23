@@ -34,7 +34,7 @@ const CustomMUIStyles = withStyles({
 		},
 		".MuiFilledInput-underline:after": {
 				borderBottom: `2px solid ${blueGrey[600]}`
-		}
+		},
 	}
 })(() => null);
 

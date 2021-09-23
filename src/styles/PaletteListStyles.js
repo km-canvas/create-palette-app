@@ -8,7 +8,7 @@ export default {
 		},
 		".fade-exit-active": {
 			opacity: 0,
-			transition: "opacity 0.5s ease-out",
+			transition: "opacity 500ms ease-out",
 		}
 	},
 	root: {

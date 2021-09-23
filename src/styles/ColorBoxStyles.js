@@ -40,6 +40,18 @@ export default {
 		letterSpacing: "1px",
 		textTransform: "uppercase",
 		textAlign: "center",
+		borderTopLeftRadius: "5px",
+		maxWidth: "50px",
+		transition: "all 0.3s ease-in-out",
+		"& span": {
+			fontSize: "1.5rem",
+			lineHeight: "0.8rem",
+			paddingTop: "0.8rem",
+			paddingLeft: "8px"
+		},
+		"&:hover": {
+			maxWidth: "76px",
+		},
 	},
 	copyButton: {
 		color: props => chroma(props.background).luminance() >= 0.6 ? "rgba(0,0,0,0.5)" : "white",

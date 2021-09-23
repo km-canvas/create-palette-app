@@ -14,7 +14,7 @@ export default {
 		backgroundAttachment: "fixed",
 		backgroundSize: "cover",
 		// background by SVGBackgrounds.com
-		[screen.down('md')]: {
+		[screen.down('sm')]: {
 			display: "inline-block",
 			height: "10vh"
 		}
@@ -31,7 +31,7 @@ export default {
 			textDecoration: "none",
 			color: "#000"
 		},
-		[screen.down("md")]: {
+		[screen.down("sm")]: {
 			width: "100%",
 			height: "50%",
 			borderRadius: "0",
@@ -40,14 +40,17 @@ export default {
 	NavbarSlider: {
 		width: "340px",
 		display: "flex",
-		[screen.down("md")]: {
-			margin: "-10px auto 0",
+		[screen.down("sm")]: {
+			margin: "-8px auto 0",
 			width: "90%",		
+		},
+		[screen.down("xx")]: {
+			margin: "0 auto",
 		}
 	},
 	slider: {
 		width: "100%",
-		margin: "0 15px",
+		margin: "0 20px",
 		display: "inline-block",
 		"& .rc-slider-track": {
 			backgroundColor: "transparent"
@@ -90,9 +93,12 @@ export default {
 		display: "flex",
 		alignItems: "center",
 		fontSize: "0.8rem",		
-		[screen.down("md")]: {
+		[screen.down("sm")]: {
 			justifyContent: "center",
 			marginTop: "-0.3rem"
+		},
+		[screen.down("xx")]: {
+			display: "none",	
 		}
 	},
 	selectContainer: {
@@ -100,7 +106,7 @@ export default {
 		marginLeft: "auto",
 		alignItems: "center",
 		fontSize: "0.8rem",
-		[screen.down("md")]: {
+		[screen.down("sm")]: {
 			display: "inline-block"
 		}
 	}

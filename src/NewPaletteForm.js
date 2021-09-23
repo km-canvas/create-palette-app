@@ -161,6 +161,7 @@ class NewPaletteForm extends Component {
             axis="xy"
             onSortEnd={this.onSortEnd}
             hexShowing={hexShowing}
+            distance={20}
           />
         </main>
       </div>

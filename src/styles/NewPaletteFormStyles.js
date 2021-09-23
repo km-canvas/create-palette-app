@@ -1,4 +1,5 @@
 import navPrismGradient from "./navbg.svg";
+import blueGrey from '@material-ui/core/colors/blueGrey';
 import { DRAWER_WIDTH } from "../constants";
 const drawerWidth = DRAWER_WIDTH;
 const styles = theme => ({
@@ -61,7 +62,11 @@ const styles = theme => ({
     }
   },
   clearButton: {
-    width: "calc(50% - 5px)"  
+    width: "calc(50% - 5px)",
+    backgroundColor: blueGrey[50],
+    '&:hover': {
+      backgroundColor: blueGrey[100],
+    },  
   },
   randomButton: {
     width: "calc(50% - 5px)",

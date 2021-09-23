@@ -87,19 +87,19 @@ class Navbar extends Component {
 						>
 							<Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
 								placement="bottom-end"
-								title="#ffffff"
+								title="Format: #ffffff"
 							>
 								<FormControlLabel value="hex" label="HEX" control={smallRadio} />
 							</Tooltip>
 							<Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} 
 								placement="bottom-end"
-								title="rgb(255, 255, 255)"
+								title="Format: rgb(255, 255, 255)"
 							>
 								<FormControlLabel value="rgb"label="RGB" control={smallRadio} />
 							</Tooltip>
 							<Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}
 								placement="bottom-end"
-								title="rgba(255, 255, 255, 1.0)"
+								title="Format: rgba(255, 255, 255, 1.0)"
 							>
 								<FormControlLabel value="rgba" label="RGBA" control={smallRadio} />
 							</Tooltip>

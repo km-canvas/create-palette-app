@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Dialog from '@material-ui/core/Dialog';
@@ -12,17 +11,7 @@ import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
 import DialogStyles from "./styles/dialogStyles";
-
-const EmojiStyles = withStyles({
-	"@global": {
-		".emoji-mart-search": {
-			marginBottom: "6px"
-		},
-		".emoji-mart": {
-			width: "100% !important"
-		}
-	}
-})(() => null);
+import CustomMUIStyles from "./styles/overrideMUIStyles";
 
 class PaletteMetaForm extends Component {
 	constructor(props) {
@@ -71,7 +60,7 @@ class PaletteMetaForm extends Component {
     return (
 			<div>
 				<DialogStyles />
-				<EmojiStyles />
+				<CustomMUIStyles />
 				<Dialog
 					fullWidth={true}
 					maxWidth={'sm'}
@@ -103,7 +92,7 @@ class PaletteMetaForm extends Component {
 						</DialogContentText>
 						</DialogContent>
 						<DialogActions>
-							<Button variant="outlined" onClick={this.showNameForm} startIcon={<ChevronLeftIcon />} >
+							<Button variant="outlined" color="primary" onClick={this.showNameForm} startIcon={<ChevronLeftIcon />} >
 								Change Palette Name
 							</Button>
 							<Button variant="contained" color="primary" type="submit">
@@ -141,7 +130,7 @@ class PaletteMetaForm extends Component {
 							/>
 						</DialogContent>
 						<DialogActions>
-							<Button variant="outlined" onClick={hideForm}>
+							<Button variant="outlined" color="primary" onClick={hideForm}>
 								On Second Thought...
 							</Button>
 							<Button variant="contained" color="primary" type="submit">

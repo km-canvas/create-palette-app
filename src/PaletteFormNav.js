@@ -16,6 +16,7 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
 import styles from './styles/PaletteFormNavStyles';
 import TooltipStyles from './styles/tooltipStyles';
+import CustomMUIStyles from './styles/overrideMUIStyles'
 
 export class PaletteFormNav extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ export class PaletteFormNav extends Component {
 			<div className={classes.root}>
 				<CssBaseline />
         <TooltipStyles />
+        <CustomMUIStyles />
         <AppBar
           position="fixed"
           color="default"

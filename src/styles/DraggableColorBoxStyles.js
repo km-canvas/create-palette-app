@@ -1,4 +1,5 @@
 import screen from './mediaQueries';
+import red from '@material-ui/core/colors/red';
 
 const styles = {
 	root: {
@@ -9,8 +10,14 @@ const styles = {
 		display: "inline-block",
 		marginBottom: "-6px",
 		"&:hover svg": {
+			borderRadius: "50%",
 			color: "white",
-			transform: "scale(1.5)"
+			transform: "scale(1.5)",
+			"&:hover": {
+				color: red[600],
+				backgroundColor: red[50],
+				boxShadow: "0 0 1px #fff, 0 1px 2px #000"
+			}
 		},
 		[screen.down('lg')]: {
 			width: "25%",
@@ -33,7 +40,7 @@ const styles = {
 		left: "0",
 		bottom: "0",
 		width: "100%",
-		padding: "0.4em",
+		padding: "0.4rem 0.6em 0.4rem 0.2rem",
 		color: "rgba(0, 0, 0, 0.5)",		
 		fontSize: "0.8rem",
 		letterSpacing: "1px",

@@ -1,10 +1,10 @@
-<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><rect fill='#EFE9DB' width='540' height='450'/><defs>
-<linearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%' gradientTransform='rotate(250,960,440)'>
-<stop offset='1'  stop-color='#EEE'/>
-<stop offset='2'  stop-color='#FFF'/>
+<svg xmlns='http://www.w3.org/2000/svg' width='100%'><rect fill='#EEEEEE' width='540' height='450'/>
+<defs>
+<linearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='100%' gradientTransform='rotate(250,960,468)'>
+<stop offset='0'  stop-color='#EEEEEE'/><stop offset='1'  stop-color='#FFFFFF'/>
 </linearGradient>
 <pattern patternUnits='userSpaceOnUse' id='b'  width='300' height='250' x='0' y='0' viewBox='0 0 1080 900'>
-<g fill-opacity='0.02'>
+<g fill-opacity='0.04'>
 <polygon fill='#444' points='90 150 0 300 180 300'/>
 <polygon points='90 150 180 0 0 0'/>
 <polygon fill='#AAA' points='270 150 360 0 180 0'/>
@@ -73,7 +73,9 @@
 <polygon fill='#FFF' points='1080 300 1170 150 990 150'/>
 <polygon points='1080 600 990 750 1170 750'/>
 <polygon fill='#666' points='1080 600 1170 450 990 450'/>
-<polygon fill='#DDD' points='1080 900 1170 750 990 750'/>
-</g>
-</pattern></defs><rect x='0' y='0' fill='url(#a)' width='100%' height='100%'/>
-<rect x='0' y='0' fill='url(#b)' width='100%' height='100%'/></svg>
+<polygon fill='#DDD' points='1080 900 1170 750 990 750'/></g>
+</pattern>
+</defs>
+<rect x='0' y='0' fill='url(#a)' width='100%' height='100%'/>
+<rect x='0' y='0' fill='url(#b)' width='100%' height='100%'/>
+</svg>

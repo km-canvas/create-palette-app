@@ -15,7 +15,7 @@ export default {
 		// background by SVGBackgrounds.com
 		backgroundAttachment: "fixed",
 		backgroundSize: "cover",
-		[screen.down("md")]: {
+		[screen.down("sm")]: {
 			display: "none"
 		}
 	},

@@ -11,12 +11,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
+import DialogStyles from "./styles/dialogStyles";
 
-const DialogStyles = withStyles({
+const EmojiStyles = withStyles({
 	"@global": {
-		".MuiDialogTitle-root": {
-			backgroundColor: "#e0e0e0"
-		},
 		".emoji-mart-search": {
 			marginBottom: "6px"
 		},
@@ -73,6 +71,7 @@ class PaletteMetaForm extends Component {
     return (
 			<div>
 				<DialogStyles />
+				<EmojiStyles />
 				<Dialog
 					fullWidth={true}
 					maxWidth={'sm'}

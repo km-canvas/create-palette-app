@@ -19,14 +19,22 @@ const styles = {
 				boxShadow: "0 0 1px #fff, 0 1px 2px #000"
 			}
 		},
+		[screen.down('xl')]: {
+			width: props => (props.open) ? "25%" : "20%",
+			height: props => (props.open) ? "20%" : "25%",
+		},
 		[screen.down('lg')]: {
-			width: "25%",
-			height: "20%"
+			width: props => (props.open) ? "50%" : "25%",
+			height: props => (props.open) ? "10%" : "20%",
 		},
 		[screen.down('md')]: {
-			width: "100%",
-			height: "5%"
-		}
+			width: props => (props.open) ? "100%" : "50%",
+			height: props => (props.open) ? "5%" : "10%",
+		},
+		[screen.down('sm')]: {
+			width: "100% !important",
+			height: "5% !important",
+		},
 	},
 	colorHexContent: {
 		position: "absolute",

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import MiniPalette from './MiniPalette';
-import styles from './styles/PaletteListStyles';
-import { withStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { withStyles } from '@material-ui/styles';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -18,7 +16,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import teal from "@material-ui/core/colors/teal";
 import red from "@material-ui/core/colors/red";
+import MiniPalette from './MiniPalette';
 import DialogStyles from "./styles/dialogStyles";
+import styles from './styles/PaletteListStyles';
 
 class PaletteList extends Component {
 	constructor(props) {
@@ -60,7 +60,6 @@ class PaletteList extends Component {
 					<nav className={classes.nav}>
 						<h1 className={classes.heading}>React Colors</h1>
 						<Link to="/palette/new">Create Custom Palette</Link>
-						<button to="/" onClick={() => {window.localStorage.clear(); window.location.reload()}}>Restore Palettes</button>
 					</nav>
 					<TransitionGroup className={classes.palettes}>
 					{palettes.map(palette => (

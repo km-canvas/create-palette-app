@@ -24,6 +24,10 @@ const styles = theme => ({
 		backgroundAttachment: "fixed",
 		backgroundSize: "cover",
     // background by SVGBackgrounds.com
+    [screen.down("sm")]: {
+      flexDirection: "column",
+      justifyContent: "center",
+    }
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -47,6 +51,10 @@ const styles = theme => ({
     },
     [screen.down('md')]: {
       marginRight: "0.5rem",
+    },
+    [screen.down('sm')]: {
+      justifyContent: "center",
+      margin: "-10px 0 0",
     }
   },
   navBtn: {

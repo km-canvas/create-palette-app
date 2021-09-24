@@ -73,14 +73,14 @@ export class ColorPickerForm extends Component {
 		return (
 			<div>
 				<div className={classes.switchPickerCtn}>
-					<h4 className={classNames(classes.activeTxt, switched && classes.nonActiveTxt)}>Color Picker</h4>
+					<h4 className={classNames(classes.activeTxt, {[classes.nonActiveTxt]: switched })}>Color Picker</h4>
 					<Switch 
 						checked={switched} 
 						onChange={this.switchPicker} 
 						value="switched" 
 						color="default" 
 					/>
-					<h4 className={classNames(classes.activeTxt, !switched && classes.nonActiveTxt)}>Swatch Picker</h4>
+					<h4 className={classNames(classes.activeTxt, {[classes.nonActiveTxt]: !switched })}>Swatch Picker</h4>
 				</div>
 				<div className={classes.colorPickerCtn}>
 					{colorPicker}

@@ -22,7 +22,8 @@ export default {
 		// background by SVGBackgrounds.com
 		backgroundAttachment: "fixed",
 		backgroundSize: "cover",
-		paddingBottom: "5vh"
+		paddingBottom: "5vh",
+		overflowY: "scroll",
 	},
 	container: {
 		width: "60%",

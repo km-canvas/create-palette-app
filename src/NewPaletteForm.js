@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import PaletteFormNav from './PaletteFormNav';
-import ColorPickerForm from './ColorPickerForm';
-import styles from './styles/NewPaletteFormStyles';
 import classNames from 'classnames';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
@@ -12,8 +9,11 @@ import IconButton from '@material-ui/core/IconButton';
 import LayersClear from '@material-ui/icons/LayersClear';
 import FindReplace from '@material-ui/icons/FindReplace';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import DraggableColorList from './DraggableColorList';
 import { arrayMoveImmutable } from 'array-move';
+import PaletteFormNav from './PaletteFormNav';
+import ColorPickerForm from './ColorPickerForm';
+import DraggableColorList from './DraggableColorList';
+import styles from './styles/NewPaletteFormStyles';
 
 
 class NewPaletteForm extends Component {
@@ -155,7 +155,8 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          <DraggableColorList 
+          <DraggableColorList
+            open={open} 
             colors={allColors} 
             removeColor={this.removeColor} 
             axis="xy"

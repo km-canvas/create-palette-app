@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import PaletteMetaForm from './PaletteMetaForm';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Tooltip from '@material-ui/core/Tooltip';
 import Fade from '@material-ui/core/Fade';
@@ -14,16 +13,15 @@ import IconButton from '@material-ui/core/IconButton';
 import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
-import styles from './styles/PaletteFormNavStyles';
+import PaletteMetaForm from './PaletteMetaForm';
 import TooltipStyles from './styles/tooltipStyles';
 import CustomMUIStyles from './styles/overrideMUIStyles'
+import styles from './styles/PaletteFormNavStyles';
 
 export class PaletteFormNav extends Component {
   constructor(props) {
     super(props)
-  
     this.state = {
-       newPaletteName: "",
        formShowing: false,
     }
     this.handleNameChange = this.handleNameChange.bind(this)
@@ -40,7 +38,7 @@ export class PaletteFormNav extends Component {
     this.setState({ formShowing: false })
   }
 	render() {
-		const { classes, open, palettes, handleSubmit, hexShowing } = this.props;
+		const { classes, open, palettes, handleSubmit, hexShowing, handleDrawerOpen, hideHex, showHex } = this.props;
     const { formShowing } = this.state;
 		return (
 			<div className={classes.root}>
@@ -50,9 +48,7 @@ export class PaletteFormNav extends Component {
         <AppBar
           position="fixed"
           color="default"
-          className={classNames(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}
+          className={classNames(classes.appBar, {[classes.appBarShift]: open })}
         >
           <Toolbar disableGutters={!open}>
             <Tooltip 
@@ -64,8 +60,8 @@ export class PaletteFormNav extends Component {
               <IconButton
                 color="inherit"
                 aria-label="Open Palette Editor"
-                onClick={this.props.handleDrawerOpen}
-                className={classNames(classes.menuButton, open && classes.hide)}
+                onClick={handleDrawerOpen}
+                className={classNames(classes.menuButton, {[classes.hide]: open})}
               >
                 <LibraryAddIcon />
               </IconButton>
@@ -82,7 +78,7 @@ export class PaletteFormNav extends Component {
               <IconButton
                 aria-label="View Color Value"
                 className={classes.viewHexBtn}
-                onClick={hexShowing ? this.props.hideHex: this.props.showHex}
+                onClick={hexShowing ? hideHex : showHex}
               >
               { hexShowing 
                 ? <VisibilityOutlinedIcon /> 

@@ -16,10 +16,9 @@ import DraggableColorList from './DraggableColorList';
 import seedPalettes from './seedPalettes';
 import styles from './styles/NewPaletteFormStyles';
 
-
 class NewPaletteForm extends Component {
   static defaultProps = {
-    maxColors: 20
+    maxColors: 20,
   }
 	constructor(props) {
 		super(props)
@@ -74,10 +73,15 @@ class NewPaletteForm extends Component {
     this.setState({ allColors: [] })
   }
   addRandomColor() {
-    const everyPaletteColor = this.props.allPalettes.map( palette => palette.colors).flat();
-    const excludeCurrentColors = everyPaletteColor.filter(color => !this.state.allColors.includes(color));
-    let randomIdx = Math.floor(Math.random() * excludeCurrentColors.length);
-    const randomColor = excludeCurrentColors[randomIdx];
+    const allSeedColors = seedPalettes.map(palette => palette.colors).flat();
+    let currColors = this.state.allColors.map(color => color.name)
+    let randomColor;
+    let isDuplicateColor = true;
+    while (isDuplicateColor) {
+      let randomIdx = Math.floor(Math.random() * allSeedColors.length);
+      randomColor = allSeedColors[randomIdx];
+      isDuplicateColor = currColors.includes(randomColor.name);
+    }
     this.setState({ allColors: [...this.state.allColors, randomColor] })
   }
   showColorHex() {
@@ -90,7 +94,6 @@ class NewPaletteForm extends Component {
     const { classes, maxColors, allPalettes } = this.props;
     const { open, allColors, hexShowing } = this.state;
     const paletteIsFull = allColors.length >= maxColors;
-
     return (
       <div className={classes.root}>
         <PaletteFormNav 

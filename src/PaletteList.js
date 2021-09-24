@@ -30,6 +30,7 @@ class PaletteList extends Component {
 		}
 		this.openDialog = this.openDialog.bind(this)
 		this.closeDialog = this.closeDialog.bind(this)
+		this.goToPalette = this.goToPalette.bind(this)
 		this.handleDelete = this.handleDelete.bind(this)
 	}
 	openDialog(id){
@@ -73,7 +74,7 @@ class PaletteList extends Component {
 								key={palette.id}
 								id={palette.id}
 								colors={palette.colors} 
-								handleClick={() => this.goToPalette(palette.id )} 
+								goToPalette={this.goToPalette} 
 								openDialog={this.openDialog}
 							/>
 						</CSSTransition>
@@ -97,7 +98,6 @@ class PaletteList extends Component {
 						<MiniPalette 
 							{...filteredPalette} 
 							key={filteredPalette.id}
-							id={filteredPalette.id}
 						/>
 					))}
 				</DialogContent>
@@ -105,7 +105,7 @@ class PaletteList extends Component {
           <List>
 						<ListItem button onClick={this.handleDelete}>
 							<ListItemAvatar>
-								<Avatar style={{ backgroundColor: red[100], color: red[600] }}>
+								<Avatar style={{ backgroundColor: red[50], color: red[600] }}>
 									<DeleteForeverIcon />
 								</Avatar>
 							</ListItemAvatar>
@@ -113,7 +113,7 @@ class PaletteList extends Component {
 						</ListItem>
             <ListItem button onClick={this.closeDialog}>
               <ListItemAvatar>
-                <Avatar style={{ backgroundColor: teal[100], color: teal['A700'] }}>
+                <Avatar style={{ backgroundColor: teal[50], color: teal['A700'] }}>
                   <UndoIcon />
                 </Avatar>
               </ListItemAvatar>

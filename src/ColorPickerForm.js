@@ -55,21 +55,17 @@ export class ColorPickerForm extends Component {
 	render() {
 		const { paletteIsFull, classes } = this.props;
 		const { currentColor, newColorName, switched } = this.state;
-		let colorPicker;
-		if(switched) {
-			colorPicker = (
+		const colorPicker = (switched) ? (
 				<SwatchesPicker 
 					onChangeComplete={this.handleColorChange} 
 					className={classes.swatchPicker}
+					width="100%"
 					height="300px"
-				/>)
-		} else {
-			colorPicker = (	
+				/>) : (	
 				<ChromePicker color={currentColor} disableAlpha={true}
-				onChangeComplete={this.handleColorChange} 
-				className={classes.chromePicker}
+					onChangeComplete={this.handleColorChange} 
+					className={classes.chromePicker}
 				/>)
-		}
 		return (
 			<div>
 				<div className={classes.switchPickerCtn}>

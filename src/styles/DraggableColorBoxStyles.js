@@ -1,5 +1,6 @@
-import screen from './mediaQueries';
 import red from '@material-ui/core/colors/red';
+import screen from './mediaQueries';
+import chroma from 'chroma-js';
 
 const styles = {
 	root: {
@@ -27,20 +28,23 @@ const styles = {
 			width: props => (props.open) ? "50%" : "25%",
 			height: props => (props.open) ? "10%" : "20%",
 		},
-		[screen.down('md')]: {
+		[screen.down('sm')]: {
 			width: props => (props.open) ? "100%" : "50%",
 			height: props => (props.open) ? "5%" : "10%",
 		},
-		[screen.down('sm')]: {
-			width: "100% !important",
-			height: "5% !important",
+		[screen.down('xs')]: {
+			width: props => (props.open || !props.open) && "100%",
+			height: props => (props.open || !props.open) && "5%",
 		},
 	},
 	colorHexContent: {
 		position: "absolute",
 		left: "0",
 		top: "0",
-		color: "rgba(0, 0, 0, 0.5)",
+		color: props => 
+			chroma(props.color).luminance() <= 0.08 
+				? "rgba(255, 255, 255, 0.8)" 
+				: "rgba(0, 0, 0, 0.6)",
 		padding: "0.4em",
 	},
 	boxContent: {
@@ -49,7 +53,10 @@ const styles = {
 		bottom: "0",
 		width: "100%",
 		padding: "0.4rem 0.6em 0.4rem 0.2rem",
-		color: "rgba(0, 0, 0, 0.5)",		
+		color: props => 
+			chroma(props.color).luminance() <= 0.08 
+				? "rgba(255, 255, 255, 0.8)" 
+				: "rgba(0, 0, 0, 0.6)",
 		fontSize: "0.8rem",
 		letterSpacing: "1px",
 		textTransform: "uppercase",

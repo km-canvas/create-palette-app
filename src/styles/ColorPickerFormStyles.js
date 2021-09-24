@@ -2,7 +2,7 @@ const styles = {
 	colorPickerCtn: {
 		width: "100%",
 		marginBottom: "1rem",
-		height: "300px"
+		height: "300px",
 	},
 	chromePicker: {
 		minWidth: "100%",

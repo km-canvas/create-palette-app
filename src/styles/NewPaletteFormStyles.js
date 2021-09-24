@@ -1,7 +1,10 @@
-import navPrismGradient from "./navbg.svg";
 import blueGrey from '@material-ui/core/colors/blueGrey';
-import { DRAWER_WIDTH } from "../constants";
+import navPrismGradient from "./navbg.svg";
+import screen from "./mediaQueries";
+import { DRAWER_WIDTH, SM_DRAWER_WIDTH } from "../constants";
 const drawerWidth = DRAWER_WIDTH;
+const mobileWidth = SM_DRAWER_WIDTH;
+
 const styles = theme => ({
   root: {
     display: 'flex',
@@ -9,6 +12,9 @@ const styles = theme => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    [screen.down("sm")]: {
+      width: mobileWidth,
+    }
   },
   drawerPaper: {
     width: drawerWidth,
@@ -19,6 +25,9 @@ const styles = theme => ({
     // background by SVGBackgrounds.com
 		backgroundAttachment: "fixed",
 		backgroundSize: "cover",
+    [screen.down("sm")]: {
+      width: mobileWidth,
+    }
   },
   drawerHeader: {
     display: 'flex',
@@ -37,6 +46,9 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
+    [screen.down("sm")]: {
+      marginLeft: -mobileWidth,
+    }
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -58,18 +70,25 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "space-between",
     "& Button": {
-      fontWeight: "500"
+      fontWeight: "500",
+      width: "calc(50% - 5px)",
+      [screen.down("sm")]: {
+        width: "100%",
+        marginTop: "1rem"
+      }
+    },
+    [screen.down("sm")]: {
+      flexDirection: "column",
+      justifyContent: "space-around",
     }
   },
   clearButton: {
-    width: "calc(50% - 5px)",
     backgroundColor: blueGrey[50],
     '&:hover': {
       backgroundColor: blueGrey[100],
-    },  
+    }
   },
   randomButton: {
-    width: "calc(50% - 5px)",
     background: "linear-gradient(45deg, #ff000080, #ffa50080, #ffff0080, #00800080, #0000ff80, #4b008280, #ee82ee80, #ff000080)"
   }
 });

@@ -13,6 +13,8 @@ import IconButton from '@material-ui/core/IconButton';
 import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@material-ui/icons/VisibilityOffOutlined';
+import SaveIcon from '@material-ui/icons/Save';
+import HomeIcon from '@material-ui/icons/Home';
 import PaletteMetaForm from './PaletteMetaForm';
 import TooltipStyles from './styles/tooltipStyles';
 import CustomMUIStyles from './styles/overrideMUIStyles'
@@ -89,7 +91,10 @@ export class PaletteFormNav extends Component {
           </Toolbar>
           <div className={classes.navBtnGroup}>
             <Link to="/">
-              <Button className={classes.navBtn} variant="contained">Go Back</Button>
+              <Button className={classes.navBtn} variant="contained">
+                <HomeIcon />
+                <span className={classes.navBtnTxt}>Go Back</span>
+                </Button>
             </Link>
             <Button 
               className={classes.navBtn} 
@@ -97,7 +102,7 @@ export class PaletteFormNav extends Component {
               color="primary"
               onClick={this.showForm}
             >
-              Save Palette
+              < SaveIcon/><span className={classes.navBtnTxt}>Save Palette</span>
             </Button>
           </div>
         </AppBar>

@@ -13,6 +13,7 @@ import { arrayMoveImmutable } from 'array-move';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import DraggableColorList from './DraggableColorList';
+import seedPalettes from './seedPalettes';
 import styles from './styles/NewPaletteFormStyles';
 
 
@@ -24,7 +25,7 @@ class NewPaletteForm extends Component {
 		super(props)
 		this.state = {
 			open: true,
-      allColors: this.props.allPalettes[0].colors,
+      allColors: seedPalettes[0].colors,
       hexShowing: false,
 		}
 		this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
@@ -119,6 +120,7 @@ class NewPaletteForm extends Component {
           <div className={classes.drawerContainer}>
             <Typography 
               variant="h4"
+              align="center"
               gutterBottom
             >
               Design Your Palette

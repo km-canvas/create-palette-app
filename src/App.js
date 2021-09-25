@@ -40,6 +40,9 @@ constructor(props) {
     )
   }
   render() {
+    const defaultPalettes = seedPalettes.map(palette => palette)
+    const localPalettes = this.state.allPalettes.map(palette => palette)
+    const availablePalettes = localPalettes.filter(val => !defaultPalettes.includes(val))
     return (
       <Route render={({location}) => (
         <TransitionGroup>
@@ -56,8 +59,8 @@ constructor(props) {
                   <Page>
                     <NewPaletteForm 
                       {...routeProps}
-                      allPalettes={this.state.allPalettes}
-                      savePalette={this.savePalette} 
+                      allPalettes={availablePalettes}
+                      savePalette={this.savePalette}
                     />
                   </Page>  
                 )} 

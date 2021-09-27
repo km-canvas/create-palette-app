@@ -27,7 +27,7 @@ const styles = theme => ({
     // background by SVGBackgrounds.com
     [screen.down("xs")]: {
       "& h6, button": {
-        display: props => (props.open) ? "none" : "inline-flex"
+        display: props => (props.openDrawer) ? "none" : "inline-flex"
       }
     },
     [screen.down("xx")]: {
@@ -70,8 +70,11 @@ const styles = theme => ({
     margin: "0 0.5rem",
     "& svg": {
       display: "none",
+      [screen.down('lg')]: {
+        display: props => (props.openDrawer) ? "inline-block" : "none"
+      },
       [screen.down('sm')]: {
-        display: "inline-block"
+        display: props => (props.openDrawer || !props.openDrawer) && "inline-block"
       },
     },
     [screen.down('md')]: {
@@ -81,8 +84,11 @@ const styles = theme => ({
   },
   navBtnTxt: {
     padding: "0.2rem",
+    [screen.down('lg')]: {
+      display: props => (props.openDrawer) ? "none" : "inline-block"
+    },
     [screen.down('sm')]: {
-      display: "none"
+      display: props => (props.openDrawer || !props.openDrawer) && "none"
     }
   }
 })

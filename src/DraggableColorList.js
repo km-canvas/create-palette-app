@@ -2,12 +2,12 @@ import React from 'react';
 import DraggableColorBox from './DraggableColorBox';
 import { SortableContainer } from 'react-sortable-hoc';
 
-const DraggableColorList = SortableContainer( ({colors, removeColor, hexShowing, open}) => {
+const DraggableColorList = SortableContainer( ({colors, removeColor, hexShowing, openDrawer}) => {
 	return (
 		<div style={{height: "100%"}} >
 			{colors.map((colorObj, idx) => (
 				<DraggableColorBox
-					open={open} 
+					openDrawer={openDrawer} 
 					hexShowing={hexShowing}
 					index={idx} 
 					color={colorObj.color} 

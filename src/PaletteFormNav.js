@@ -40,7 +40,7 @@ export class PaletteFormNav extends Component {
     this.setState({ formShowing: false })
   }
 	render() {
-		const { classes, open, palettes, handleSubmit, hexShowing, handleDrawerOpen, hideHex, showHex } = this.props;
+		const { classes, openDrawer, palettes, handleSubmit, hexShowing, handleDrawerOpen, hideHex, showHex } = this.props;
     const { formShowing } = this.state;
 		return (
 			<div className={classes.root}>
@@ -50,9 +50,9 @@ export class PaletteFormNav extends Component {
         <AppBar
           position="fixed"
           color="default"
-          className={classNames(classes.appBar, {[classes.appBarShift]: open })}
+          className={classNames(classes.appBar, {[classes.appBarShift]: openDrawer })}
         >
-          <Toolbar disableGutters={!open}>
+          <Toolbar disableGutters={!openDrawer}>
             <Tooltip 
                 TransitionComponent={Fade} 
                 TransitionProps={{ timeout: 600 }} 
@@ -63,7 +63,7 @@ export class PaletteFormNav extends Component {
                 color="inherit"
                 aria-label="Open Palette Editor"
                 onClick={handleDrawerOpen}
-                className={classNames(classes.menuButton, {[classes.hide]: open})}
+                className={classNames(classes.menuButton, {[classes.hide]: openDrawer})}
               >
                 <LibraryAddIcon />
               </IconButton>

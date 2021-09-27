@@ -4,6 +4,9 @@ import classNames from 'classnames';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import LayersClear from '@material-ui/icons/LayersClear';
@@ -13,7 +16,7 @@ import { arrayMoveImmutable } from 'array-move';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import DraggableColorList from './DraggableColorList';
-import seedPalettes from './seedPalettes';
+import NewPaletteStarterDialog from './NewPaletteStarterDialog';
 import styles from './styles/NewPaletteFormStyles';
 
 class NewPaletteForm extends Component {
@@ -23,12 +26,15 @@ class NewPaletteForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			open: true,
-      allColors: seedPalettes[0].colors,
+			openDrawer: true,
+      allColors: [],
+      openDialog: true,
       hexShowing: false,
 		}
 		this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
 		this.handleDrawerClose = this.handleDrawerClose.bind(this);
+    this.handleBlankPalette = this.handleBlankPalette.bind(this);
+    this.handleStarterPalette = this.handleStarterPalette.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.saveCustomPalette = this.saveCustomPalette.bind(this);
@@ -41,12 +47,24 @@ class NewPaletteForm extends Component {
 	}
 
   handleDrawerOpen() {
-    this.setState({ open: true });
+    this.setState({ openDrawer: true });
   };
   handleDrawerClose() {
-    this.setState({ open: false });
+    this.setState({ openDrawer: false });
   };
-
+  handleBlankPalette() {
+    this.setState({
+      allColors: [],
+      openDialog: false
+    })
+  }
+  handleStarterPalette(id) {
+    const starterPalette = this.props.allPalettes.filter(palette => palette.id === id).map(palette => palette.colors);
+    this.setState({
+      allColors: starterPalette[0],
+      openDialog: false
+    })
+  };
   addNewColor(newColor) {
     this.setState({ allColors: [...this.state.allColors, newColor] })
   }
@@ -92,12 +110,12 @@ class NewPaletteForm extends Component {
   }
   render() {
     const { classes, maxColors, allPalettes } = this.props;
-    const { open, allColors, hexShowing } = this.state;
+    const { openDrawer, openDialog, allColors, hexShowing } = this.state;
     const paletteIsFull = allColors.length >= maxColors;
     return (
       <div className={classes.root}>
         <PaletteFormNav 
-          open={open} 
+          openDrawer={openDrawer} 
           palettes={allPalettes} 
           handleSubmit={this.saveCustomPalette} 
           handleDrawerOpen={this.handleDrawerOpen}
@@ -109,7 +127,7 @@ class NewPaletteForm extends Component {
           className={classes.drawer}
           variant="persistent"
           anchor="left"
-          open={open}
+          open={openDrawer}
           classes={{
             paper: classes.drawerPaper,
           }}
@@ -156,12 +174,12 @@ class NewPaletteForm extends Component {
         </Drawer>
         <main
           className={classNames(classes.content, {
-            [classes.contentShift]: open,
+            [classes.contentShift]: openDrawer,
           })}
         >
           <div className={classes.drawerHeader} />
           <DraggableColorList
-            open={open} 
+            openDrawer={openDrawer} 
             colors={allColors} 
             removeColor={this.removeColor} 
             axis="xy"
@@ -170,6 +188,22 @@ class NewPaletteForm extends Component {
             distance={20}
           />
         </main>
+        <Dialog
+          open={openDialog}
+          scroll="paper"
+          aria-labelledby="scroll-dialog-title"
+          fullWidth={true}
+          maxWidth="xl"
+        >
+          <DialogTitle id="scroll-dialog-title" align="center">Choose a Starter Palette</DialogTitle>
+          <DialogContent>
+            <NewPaletteStarterDialog
+              handleBlankPalette={this.handleBlankPalette}
+              handleStarterPalette={this.handleStarterPalette}
+              palettes={allPalettes}
+            />
+          </DialogContent>
+        </Dialog>
       </div>
     );
   }

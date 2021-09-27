@@ -21,20 +21,20 @@ const styles = {
 			}
 		},
 		[screen.down('xl')]: {
-			width: props => (props.open) ? "25%" : "20%",
-			height: props => (props.open) ? "20%" : "25%",
+			width: props => (props.openDrawer) ? "25%" : "20%",
+			height: props => (props.openDrawer) ? "20%" : "25%",
 		},
 		[screen.down('lg')]: {
-			width: props => (props.open) ? "50%" : "25%",
-			height: props => (props.open) ? "10%" : "20%",
+			width: props => (props.openDrawer) ? "50%" : "25%",
+			height: props => (props.openDrawer) ? "10%" : "20%",
 		},
 		[screen.down('sm')]: {
-			width: props => (props.open) ? "100%" : "50%",
-			height: props => (props.open) ? "5%" : "10%",
+			width: props => (props.openDrawer) ? "100%" : "50%",
+			height: props => (props.openDrawer) ? "5%" : "10%",
 		},
 		[screen.down('xs')]: {
-			width: props => (props.open || !props.open) && "100%",
-			height: props => (props.open || !props.open) && "5%",
+			width: props => (props.openDrawer || !props.openDrawer) && "100%",
+			height: props => (props.openDrawer || !props.openDrawer) && "5%",
 		},
 	},
 	colorHexContent: {

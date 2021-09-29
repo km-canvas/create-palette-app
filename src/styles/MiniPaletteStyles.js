@@ -7,8 +7,14 @@ export default {
 		borderRadius: "5px",
 		padding: "0.5rem",
 		cursor: "pointer",
+		boxShadow: "rgb(0 0 0 / 30%) 0px 2px 2px, rgb(0 0 0 / 30%) 0px 4px 6px",
+		"&:hover": {
+			boxShadow: "rgb(0 0 0 / 30%) 0px 2px 4px, rgb(0 0 0 / 50%) 0px 4px 8px",
+			transition: "box-shadow 0.3s ease-in-out",
+		},
 		"&:hover div:first-child": {
-			opacity: 1
+			opacity: 1,
+			transition: "opacity 0.3s ease-in-out",
 		}
 	},
 	colors: {

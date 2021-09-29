@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { withStyles } from '@material-ui/styles';
+import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -26,7 +27,7 @@ class PaletteList extends Component {
 		this.state = {
 			 openDeleteDialog: false,
 			 deletePaletteId: "",
-			 deletePaletteColors: []
+			 deletePaletteColors: [],
 		}
 		this.openDialog = this.openDialog.bind(this)
 		this.closeDialog = this.closeDialog.bind(this)
@@ -59,9 +60,17 @@ class PaletteList extends Component {
 				<div className={classes.container}>
 					<nav className={classes.nav}>
 						<h1 className={classes.heading}>React Colors</h1>
-						<Link to="/palette/new">Create Custom Palette</Link>
 					</nav>
 					<TransitionGroup className={classes.palettes}>
+						<CSSTransition timeout={0}>
+							<Link to="/palette/new" className={classes.createPaletteLink}>
+								<div className={classes.createPaletteTxt}>
+								<Typography variant="h6" align="center">
+									Design a Custom Palette								
+								</Typography>
+								</div>
+							</Link>
+						</CSSTransition>
 					{palettes.map(palette => (
 						<CSSTransition
 							key={palette.id}

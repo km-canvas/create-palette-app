@@ -19,6 +19,7 @@ import DraggableColorList from './DraggableColorList';
 import NewPaletteStarterDialog from './NewPaletteStarterDialog';
 import styles from './styles/NewPaletteFormStyles';
 
+
 class NewPaletteForm extends Component {
   static defaultProps = {
     maxColors: 20,

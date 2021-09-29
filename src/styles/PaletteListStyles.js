@@ -1,5 +1,6 @@
 import screen from "./mediaQueries";
 import bgPrismGradient from "./bgPrism.svg";
+import navPrismGradient from "./navbg.svg";
 /* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
 export default {
 	"@global": {
@@ -45,7 +46,7 @@ export default {
 		color: "#333",
 		alignItems: "center",
 		"& a": {
-			color: "#333"
+			textDecoration: "none",
 		}
 	},
 	heading: {
@@ -73,5 +74,40 @@ export default {
 		[screen.down('xx')]: {
 			gridTemplateColumns: "repeat(1, 100%)",
 		}
+	},
+	createPaletteLink: {
+		position: "relative",
+		backgroundColor: "#FFF",
+		backgroundImage: `url(${navPrismGradient})`,
+		backgroundAttachment: "fixed",
+		backgroundSize: "cover",
+    // background by SVGBackgrounds.com 
+		border: "1px solid black",
+		borderRadius: "5px",
+		padding: "1rem",
+		cursor: "pointer",
+		textDecoration: "none",
+		color: "#000",
+		boxShadow: "rgb(0 0 0 / 30%) 0px 2px 2px, rgb(0 0 0 / 30%) 0px 4px 6px",
+		transition: "box-shadow 0.3s ease-in-out",
+		"&:hover": {
+			boxShadow: "rgb(0 0 0 / 30%) 0px 2px 2px, rgb(0 0 0 / 50%) 0px 4px 8px",
+			"& div": {
+				transform: "scale(0.95)",
+			}
+		}
+	},
+	createPaletteTxt: {
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		height: "100%",
+		backgroundColor: "rgba(187,224,225,0.5)",
+		borderRadius: "5px",
+		border: "2px solid gray",
+		transition: "transform 0.3s ease-in-out",
+		"& h6": {
+			fontWeight: "600"
+		},
 	}
 }

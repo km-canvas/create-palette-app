@@ -42,7 +42,10 @@ constructor(props) {
   render() {
     const defaultPalettes = seedPalettes.map(palette => palette)
     const localPalettes = this.state.allPalettes.map(palette => palette)
-    const availablePalettes = localPalettes.filter(val => !defaultPalettes.includes(val))
+    const combinedPalettes = [...defaultPalettes, ...localPalettes]
+    const availablePalettes = Array.from(new Set(
+      combinedPalettes.map(a => a.id))).map(id => {return combinedPalettes.find(a => a.id === id) 
+      })
     return (
       <Route render={({location}) => (
         <TransitionGroup>

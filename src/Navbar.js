@@ -15,6 +15,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import PrintPalette from './PrintPalette';
 import TooltipStyles from './styles/tooltipStyles';
 import styles from './styles/NavbarStyles';
 
@@ -36,7 +37,7 @@ class Navbar extends Component {
 		this.setState({ open: false })
 	}
 	render() {
-		const { level, changeLevel, isFullPalette, classes } = this.props;
+		const { level, changeLevel, isFullPalette, classes, colors, paletteName } = this.props;
 		const { format, open } = this.state;
 		const smallRadio = (
 				<Radio 
@@ -76,6 +77,11 @@ class Navbar extends Component {
 					</div>
 					)
 				}
+				{/* <PrintPalette 
+					paletteName={paletteName} 
+					colors={colors} 
+					level={level}
+				/> */}
 				<div className={classes.radioContainer}>
 					<FormControl component="fieldset" margin="none">
 						<RadioGroup
@@ -113,6 +119,13 @@ class Navbar extends Component {
 					>
 						<HelpOutlineIcon color="disabled" fontSize="small" style={{marginRight: "15px"}}/>
 					</Tooltip>
+					{isFullPalette && (
+						<PrintPalette 
+							paletteName={paletteName} 
+							colors={colors} 
+							level={level}
+						/>
+					)}
 				</div>
 				<Snackbar 
 					anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}

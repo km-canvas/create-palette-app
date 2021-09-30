@@ -105,6 +105,7 @@ export default {
 		backgroundColor: "rgba(187,224,225,0.5)",
 		borderRadius: "5px",
 		border: "2px solid gray",
+		padding: "1rem",
 		transition: "transform 0.3s ease-in-out",
 		"& h6": {
 			fontWeight: "600"

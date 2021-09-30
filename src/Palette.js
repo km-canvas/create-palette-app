@@ -40,6 +40,8 @@ class Palette extends Component {
 		return (
 			<div className={classes.Palette}>
 				<Navbar
+					paletteName={paletteName}
+					colors={colors}
 					level={level} 
 					changeLevel={this.changeLevel} 
 					handleChange={this.changeFormat} 

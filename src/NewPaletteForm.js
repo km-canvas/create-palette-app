@@ -3,6 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
+import Fade from '@material-ui/core/Fade';
 import Divider from '@material-ui/core/Divider';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -12,11 +14,13 @@ import IconButton from '@material-ui/core/IconButton';
 import LayersClear from '@material-ui/icons/LayersClear';
 import FindReplace from '@material-ui/icons/FindReplace';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import PaletteIcon from '@material-ui/icons/Palette';
 import { arrayMoveImmutable } from 'array-move';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import DraggableColorList from './DraggableColorList';
 import NewPaletteStarterDialog from './NewPaletteStarterDialog';
+import CustomMUIStyles from './styles/overrideMUIStyles'
 import styles from './styles/NewPaletteFormStyles';
 
 
@@ -36,6 +40,7 @@ class NewPaletteForm extends Component {
 		this.handleDrawerClose = this.handleDrawerClose.bind(this);
     this.handleBlankPalette = this.handleBlankPalette.bind(this);
     this.handleStarterPalette = this.handleStarterPalette.bind(this);
+    this.reopenDialog = this.reopenDialog.bind(this);
     this.addNewColor = this.addNewColor.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.saveCustomPalette = this.saveCustomPalette.bind(this);
@@ -65,7 +70,10 @@ class NewPaletteForm extends Component {
       allColors: starterPalette[0],
       openDialog: false
     })
-  };
+  }
+  reopenDialog() {
+    this.setState({ openDialog: true })
+  }
   addNewColor(newColor) {
     this.setState({ allColors: [...this.state.allColors, newColor] })
   }
@@ -113,8 +121,10 @@ class NewPaletteForm extends Component {
     const { classes, maxColors, allPalettes } = this.props;
     const { openDrawer, openDialog, allColors, hexShowing } = this.state;
     const paletteIsFull = allColors.length >= maxColors;
+    const paletteIsEmpty = allColors.length === 0;
     return (
       <div className={classes.root}>
+        <CustomMUIStyles />
         <PaletteFormNav 
           openDrawer={openDrawer} 
           palettes={allPalettes} 
@@ -147,6 +157,23 @@ class NewPaletteForm extends Component {
             >
               Design Your Palette
             </Typography>
+            <Tooltip 
+              TransitionComponent={Fade} 
+              TransitionProps={{ timeout: 600 }} 
+              title="Click to choose an existing palette to edit. Only available if canvas is empty."
+              placement="bottom-start"
+            >
+             <Button
+                className={classes.paletteButton}
+                startIcon={<PaletteIcon />}
+                variant="contained" 
+                color="primary"
+                onClick={this.reopenDialog}
+                disabled={!paletteIsEmpty}
+              >
+                Choose a Starter Palette
+              </Button>
+            </Tooltip>
             <div className={classes.buttonContainer}>
               <Button
                 className={classes.clearButton}

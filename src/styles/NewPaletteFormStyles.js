@@ -65,6 +65,12 @@ const styles = theme => ({
     justifyContent: "center",
     alignItems: "center"
   },
+  paletteButton: {
+    width: "100%",
+    marginBottom: "1rem",
+    [screen.down("sm")]: {
+      marginBottom: 0,    }
+  },
   buttonContainer: {
     width: "100%",
     display: "flex",

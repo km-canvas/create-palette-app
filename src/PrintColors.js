@@ -46,6 +46,7 @@ class PrintColors extends PureComponent {
 		})
 		return (
 			<div>
+				<small>**NOTE: Background graphics print option must be checked to display color preview</small>
 				{colorsByLevel}
 			</div>
 		)

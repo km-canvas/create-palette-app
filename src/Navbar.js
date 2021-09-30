@@ -77,11 +77,6 @@ class Navbar extends Component {
 					</div>
 					)
 				}
-				{/* <PrintPalette 
-					paletteName={paletteName} 
-					colors={colors} 
-					level={level}
-				/> */}
 				<div className={classes.radioContainer}>
 					<FormControl component="fieldset" margin="none">
 						<RadioGroup

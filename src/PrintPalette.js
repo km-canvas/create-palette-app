@@ -22,7 +22,7 @@ class PrintPalette extends Component {
 						<Tooltip 
 							TransitionComponent={Fade} 
 							TransitionProps={{ timeout: 600 }} 
-							title="Print all color values to a PDF"
+							title="Print all color values and levels to a PDF."
 							placement="bottom-end"
 						>
 						<Button 

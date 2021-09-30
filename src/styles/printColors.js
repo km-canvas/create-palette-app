@@ -4,14 +4,21 @@ export default {
 		maxWidth: "8in",
 		height: "10in",
 		pageBreakBefore: "always",
+		"&:first-of-type": {
+			pageBreakBefore: "avoid",
+		}
 	},
 	title: {
 		display: "flex",
 		justifyContent: "space-between",
-
-		"& h4": {
-			paddingRight: "1rem"
-		}
+		paddingLeft: "1rem",
+		paddingRight: "1rem",
+		"& *": {
+			marginBottom: 0
+		},
+		// "& h4": {
+		// 	paddingRight: "1rem"
+		// }
 	},
 	table: {
 		width: "100%",

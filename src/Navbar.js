@@ -50,7 +50,7 @@ class Navbar extends Component {
 				<TooltipStyles />
 				<div className={classes.NavbarLogo}>
 					<Link to="/">
-						ColorApp
+						ReactColorApp
 					</Link>
 				</div>
 				{isFullPalette && (

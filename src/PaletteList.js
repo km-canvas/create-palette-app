@@ -59,7 +59,7 @@ class PaletteList extends Component {
 				<DialogStyles />
 				<div className={classes.container}>
 					<nav className={classes.nav}>
-						<h1 className={classes.heading}>React Colors</h1>
+						<h1 className={classes.heading}>ReactColorApp</h1>
 					</nav>
 					<TransitionGroup className={classes.palettes}>
 						<CSSTransition timeout={0}>

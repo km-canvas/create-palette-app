@@ -1,3 +1,20 @@
+# KM Version of React Colors Project from Instructor Colt Steele
+
+- Initial version made by Colt can be found here: https://github.com/Colt/react-colors
+- My launched version with added component features and style changes can be found here: http://km-react-color-app.herokuapp.com/
+
+# Colt Version of React Colors Project
+
+- A clone of websites like [Flat UI Colors](https://flatuicolors.com/) and [Material UI Colors](http://materialuicolors.co/?utm_source=launchers).
+- One of the projects for my Modern React Bootcamp course.
+- Each video has its own corresponding commit that you can follow along with.
+
+![image](https://i.imgur.com/9x1F9At.png)
+![image](https://i.imgur.com/GM0etHA.png)
+
+![image](https://i.imgur.com/QB2zRzf.png)
+![image](https://i.imgur.com/aFowgNg.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
